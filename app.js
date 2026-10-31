@@ -1,185 +1,189 @@
 /**
- * CARTAGENA MÁGICA & STOPOVER ADVENTURE
- * Master Interactive Logic & Admin System
- * Desarrollado con estándares profesionales de UX/UI (+20 años exp.)
+ * CARTAGENA STOPOVER EXPEDITION — CORE APPLICATION LOGIC
+ * Master Controller & Executive Response Portal
+ * Engineered to Senior Architectural Standards (20+ Years Exp.)
  */
 
-// Estado global de la aplicación
+// Application State & Curated Curiosities
 const AppState = {
   destinations: [
     {
       id: "aeropuerto",
-      title: "Aeropuerto Internacional Rafael Núñez (CTG)",
-      subtitle: "La Puerta Dorada de Entrada al Caribe Colombiano",
-      category: "Infraestructura & Punto de Encuentro",
-      tag: "Punto de Partida",
-      badgeColor: "bg-sky-100 text-sky-800 border-sky-300",
-      image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80",
-      imageCaption: "Aterrizaje escénico sobre las aguas del Mar Caribe",
-      description: "El Aeropuerto Internacional Rafael Núñez es la principal puerta aérea de la región Caribe. Su ubicación privilegiada, a escasos metros de la playa en el barrio Crespo y a solo 10 minutos de la histórica Ciudad Amurallada, lo convierte en una de las terminales aéreas más fascinantes y estratégicas de toda Sudamérica.",
+      num: "01",
+      title: "Rafael Núñez International Airport (CTG)",
+      subtitle: "Gateway to the Colombian Caribbean & Strategic Layover Hub",
+      category: "Aviation & Meeting Point",
+      tag: "Point of Entry",
+      badgeColor: "text-slate-800 bg-slate-100 border-slate-200",
+      image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1400&q=85",
+      imageCaption: "Coastal runway approach directly over the turquoise waters of Crespo Beach",
+      description: "Rafael Núñez International Airport serves as the premier aerial gateway to northern Colombia. Positioned mere meters from the Caribbean shoreline in Crespo and barely a 10-minute private drive from the 17th-century UNESCO Walled City, it ranks among the most strategically positioned stopover terminals across the Americas.",
       highlights: [
-        "A solo 10-12 minutos de la Ciudad Amurallada y Castillo San Felipe.",
-        "Punto de recepción VIP para escalas cortas (Stopover de 6 a 12 horas).",
-        "Servicio de custodia segura de equipaje y lockers para viajeros en tránsito.",
-        "Operaciones directas internacionales con EE.UU., Europa, Centro y Sudamérica."
+        "Direct 10 to 12-minute transit to the historic Walled Center & Fortress.",
+        "Designated VIP greeting area for streamlined 6 to 12-hour layovers.",
+        "Secure climate-controlled luggage storage & locker facility.",
+        "Direct flight corridors connecting North America, Europe, and Latin America."
       ],
       curiousFacts: [
         {
-          title: "Honor a un ilustre cuatro veces presidente",
-          text: "El aeropuerto lleva el nombre del estadista, pensador y cuatro veces presidente de Colombia, Rafael Núñez, quien además fue el autor de la letra del Himno Nacional. Su residencia de madera original todavía se conserva intacta a minutos del aeropuerto en El Cabrero."
+          title: "Honoring a Four-Time Statesman & Poet",
+          text: "The airport honors Rafael Núñez, a seminal 19th-century intellectual, four-time President of Colombia, and composer of the Colombian National Anthem. His original wooden mansion remains meticulously preserved minutes from the airfield in El Cabrero."
         },
         {
-          title: "Aterrizaje sobre el mar caribeño",
-          text: "La cabecera de la pista está separada del Mar Caribe por solo una avenida costera. Al aterrizar, los pasajeros experimentan la ilusión óptica de tocar el agua turquesa antes de que las ruedas toquen el asfalto."
+          title: "Runway Kissing the Caribbean Waves",
+          text: "Separated from the open sea by only a coastal avenue, incoming aircraft conduct a dramatic final approach directly over the surf, creating an optical impression of touching turquoise waters seconds prior to touchdown."
         },
         {
-          title: "La escala turística más rápida de América",
-          text: "A diferencia de las grandes capitales donde los aeropuertos quedan a 1 o 2 horas del centro histórico, en Cartagena puedes salir del avión, subirte a un transporte privado y estar tomándote un café frente a una muralla del siglo XVII en menos de 15 minutos."
+          title: "The Most Accessible Historical Center in the Americas",
+          text: "Unlike major metropolitan airports situated one to two hours outside city centers, Cartagena allows transit travelers to disembark, clear customs, and sip single-origin Colombian coffee atop colonial ramparts within twenty minutes."
         }
       ]
     },
     {
       id: "castillo",
-      title: "Castillo de San Felipe de Barajas",
-      subtitle: "El Guardián Inexpugnable de Piedra y Coral",
-      category: "Monumento Histórico & Patrimonio UNESCO",
-      tag: "Maravilla Militar",
-      badgeColor: "bg-amber-100 text-amber-900 border-amber-300",
-      image: "https://images.unsplash.com/photo-1589556264800-08ae9e129a8c?auto=format&fit=crop&w=1200&q=80",
-      imageCaption: "La colosal fortaleza que defendió al Nuevo Mundo",
-      description: "Construido sobre la colina de San Lázaro en 1657 y expandido en 1762, el Castillo de San Felipe de Barajas es la obra militar de ingeniería española más monumental erigida en todo el continente americano. Diseñado para resistir asedios por tierra y mar, jamás fue conquistado tras su modernización.",
+      num: "02",
+      title: "San Felipe de Barajas Castle",
+      subtitle: "The Impregnable Citadel of Spanish Colonial Military Engineering",
+      category: "UNESCO World Heritage & Military Fortress",
+      tag: "Colonial Marvel",
+      badgeColor: "text-amber-900 bg-amber-50 border-amber-200",
+      image: "https://images.unsplash.com/photo-1589556264800-08ae9e129a8c?auto=format&fit=crop&w=1400&q=85",
+      imageCaption: "The stone fortress commanding 360-degree surveillance across the bay",
+      description: "Erected in 1657 atop San Lázaro hill and expanded in 1762, the Castle of San Felipe de Barajas stands as the most monumental fortification constructed by the Spanish Crown anywhere in the New World. Engineered to endure combined naval and overland sieges, it was never breached following its modernization.",
       highlights: [
-        "Laberinto de túneles subterráneos diseñados con acústica militar.",
-        "Ubicación panorámica de 360 grados sobre toda la bahía de Cartagena.",
-        "Baterías de cañones originales que protegieron los tesoros de ultramar.",
-        "Monumento insignia declarado Patrimonio de la Humanidad por la UNESCO."
+        "Subterranean acoustic tunnel labyrinth engineered for stealth warfare.",
+        "Unrivaled 360-degree panoramic vantage point across Cartagena Bay.",
+        "Authentic bronze and iron artillery batteries preserved on higher bastions.",
+        "Cornerstone monument of Cartagena's UNESCO World Heritage designation."
       ],
       curiousFacts: [
         {
-          title: "Túneles con acústica de alta sensibilidad",
-          text: "El intricado laberinto subterráneo fue concebido acústicamente para amplificar cualquier ruido. Un soldado situado en una cámara oculta podía escuchar los pasos y susurros de los invasores enemigos a más de 50 metros de distancia."
+          title: "Acoustically Amplified Tunnel Networks",
+          text: "The fortress features an elaborate subterranean labyrinth engineered with parabolic acoustics. Sentries positioned deep inside blind chambers could detect enemy footsteps, whispers, and spade strikes over 50 meters away in pitch darkness."
         },
         {
-          title: "La legendaria hazaña de Blas de Lezo (1741)",
-          text: "En 1741, el almirante inglés Edward Vernon atacó Cartagena con una flota colosal de 186 buques y más de 27.000 hombres (más grande que la Invencible española). El comandante Blas de Lezo, tuerto, manco y cojo, los derrotó en este castillo con apenas 3.600 hombres y 6 navíos en uno de los episodios más heroicos de la historia naval."
+          title: "The Impossible Defense of Blas de Lezo (1741)",
+          text: "During the Battle of Cartagena de Indias, British Admiral Vernon assaulted the citadel with 186 warships and 27,000 troops. Spanish Commander Blas de Lezo—blind in one eye, one-armed, and one-legged—routed the assault force with merely 3,600 defenders and 6 ships."
         },
         {
-          title: "Paredes inclinadas antibalas de cañón",
-          text: "A diferencia de los castillos medievales con muros rectos, San Felipe fue construido con rampas y muros inclinados de forma triangular. Esto hacía que los proyectiles de los cañones británicos rebotaran hacia el cielo sin fracturar la muralla de cal y roca coralina."
+          title: "Triangular Incline Defense Architecture",
+          text: "Instead of vertical castle walls vulnerable to kinetic pulverization, San Felipe was built with sloping, triangular limestone and coral ramparts designed to deflect inbound naval cannon fire harmlessly into the sky."
         }
       ]
     },
     {
       id: "aviario",
-      title: "Aviario Nacional de Colombia",
-      subtitle: "El Segundo Aviario Más Grande de América",
-      category: "Santuario de Vida Silvestre & Conservación",
-      tag: "Biodiversidad Pura",
-      badgeColor: "bg-emerald-100 text-emerald-900 border-emerald-300",
-      image: "https://images.unsplash.com/photo-1552728089-57bdde30beb3?auto=format&fit=crop&w=1200&q=80",
-      imageCaption: "Tucanes, flamencos y más de 170 especies en libertad",
-      description: "Situado en el kilómetro 14.5 de la península de Barú, el Aviario Nacional de Colombia es una joya ecológica de 7 hectáreas dedicadas a la investigación, preservación y educación ambiental. Recrea con precisión científica tres ecosistemas: selva húmeda tropical, zona costera y desierto.",
+      num: "03",
+      title: "National Aviary of Colombia",
+      subtitle: "Continental Wildlife Sanctuary & Avian Conservation Center",
+      category: "Ecological Reserve & Biodiversity",
+      tag: "Wildlife Sanctuary",
+      badgeColor: "text-emerald-900 bg-emerald-50 border-emerald-200",
+      image: "https://images.unsplash.com/photo-1552728089-57bdde30beb3?auto=format&fit=crop&w=1400&q=85",
+      imageCaption: "Over 170 tropical species thriving in scientifically recreated microclimates",
+      description: "Located on the Barú Peninsula across seven hectares of pristine ecological landscape, the National Aviary of Colombia is the second-largest aviary in the Americas. It faithfully recreates three critical biomes: humid tropical rainforest, coastal littoral, and desert, promoting preservation and environmental science.",
       highlights: [
-        "Más de 1.700 ejemplares de aves de 170 especies nativas y exóticas.",
-        "Show interactivo de vuelo libre sin jaulas dos veces al día.",
-        "Hogar y centro de reproducción del majestuoso Cóndor de los Andes.",
-        "Laguna rosada habitada por decenas de flamencos del Caribe en cortejo."
+        "1,700+ individual specimens representing 170 indigenous and migratory species.",
+        "Twice-daily educational free-flight presentation with uncaged raptors.",
+        "Reproduction and rehabilitation habitat for the endangered Andean Condor.",
+        "Naturalized pink flamingo lagoon demonstrating communal courtship rituals."
       ],
       curiousFacts: [
         {
-          title: "Colombia: El país número 1 del planeta en aves",
-          text: "Colombia alberga casi el 20% de todas las especies de aves del mundo entero (más de 1.950 especies registradas). El Aviario Nacional fue creado precisamente como un tributo a este título de campeones mundiales de la ornitología."
+          title: "Colombia: The Undisputed Global Capital of Birds",
+          text: "Colombia ranks first on Earth in avian diversity, hosting nearly 20% of all known bird species worldwide (over 1,950 cataloged taxa). The National Aviary was established as a living testament to this planetary ecological supremacy."
         },
         {
-          title: "El milagro del Cóndor de los Andes en el Caribe",
-          text: "Aunque el majestuoso Cóndor habita en las cumbres heladas de la cordillera andina a más de 3.000 metros, el Aviario logró acondicionar un hábitat especial con microclima donde nació y creció con éxito el primer pichón de cóndor en la costa caribeña en un hito científico."
+          title: "Breeding the Andean Condor at Sea Level",
+          text: "Although the Andean Condor's native range is restricted to freezing mountain crags exceeding 3,500 meters, conservation biologists successfully created an adapted microclimate in Barú, producing the first chick born in coastal Colombia."
         },
         {
-          title: "El secreto del color de los flamencos",
-          text: "Los flamencos del aviario no nacen rosados sino grisáceos. Su intenso plumaje coralino y magenta se debe a una dieta natural rica en betacarotenos presentes en pequeños crustáceos y algas microscópicas de sus humedales protegidos."
+          title: "The Biological Chemistry of Flamingo Feathers",
+          text: "Flamingos are born dull gray. Their luminous coral-pink hue is synthesized entirely from their diet: micro-crustaceans and blue-green algae rich in carotenoid pigments thriving in the Aviary's carefully filtered salt marshes."
         }
       ]
     },
     {
       id: "baru",
-      title: "Playas de Barú e Islas del Rosario",
-      subtitle: "Aguas Turquesas, Arenas de Coral y Sabor Auténtico",
-      category: "Paraíso Tropical & Descanso Costero",
-      tag: "Sol y Playa",
-      badgeColor: "bg-cyan-100 text-cyan-900 border-cyan-300",
-      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
-      imageCaption: "Playa Blanca y bahías de aguas transparentes y tranquilas",
-      description: "Famosa mundialmente por su arena blanca reluciente y aguas cálidas de matices aguamarina y esmeralda, Barú es el destino predilecto para desconectarse bajo palmeras tropicales. Sus costas ofrecen arrecifes de coral vivos para snorkel, deportes náuticos y la gastronomía más representativa del Caribe.",
+      num: "04",
+      title: "Barú Peninsula & Rosario Reefs",
+      subtitle: "Pristine Coral Sands, Turquoise Swells & Coastal Gastronomy",
+      category: "Coastal Haven & Marine Sanctuary",
+      tag: "Island Sanctuary",
+      badgeColor: "text-cyan-900 bg-cyan-50 border-cyan-200",
+      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=85",
+      imageCaption: "Playa Blanca's luminous white coral sands and tranquil Caribbean waters",
+      description: "Renowned globally for flour-soft bleached coral sands and crystalline waters shifting between jade and sapphire, Barú represents the quintessential Caribbean sanctuary. The coastline features vibrant fringing reefs, coastal breeze cabanas, and authentic Afro-Caribbean culinary traditions.",
       highlights: [
-        "Aguas cristalinas ideales para baño, descanso y snorkel en arrecifes.",
-        "Almuerzo típico caribeño: pargo rojo o mojarra frita, arroz de coco titoté y patacones.",
-        "Paseos en lancha hacia Cholón, Playa Tranquila y las Islas del Rosario.",
-        "Fenómeno nocturno de bioluminiscencia en la ensenada de Portonaito."
+        "Crystal-clear shallow waters ideal for ocean swimming, relaxation, and reef snorkeling.",
+        "Traditional coastal banquet: whole fried red snapper, coconut titoté rice, and plantains.",
+        "Exclusive seaside lounge access away from congested public sectors.",
+        "Nocturnal bioluminescent phenomena in protected inland lagoons."
       ],
       curiousFacts: [
         {
-          title: "No es una isla real, sino una península dividida",
-          text: "Geográficamente, Barú era una península unida al continente. Se convirtió en una 'isla artificial' en el siglo XVII cuando los españoles excavaron a mano el Canal del Dique para conectar el río Magdalena con Cartagena. Hoy en día cuenta con un moderno puente vehicular."
+          title: "An Artificial Island Carved by Hand",
+          text: "Barú was not born an island. Historically connected to the South American continent, it became an island in the 17th century when thousands of colonial laborers dug the 118-kilometer Canal del Dique to link the Magdalena River with Cartagena Bay."
         },
         {
-          title: "El brillo mágico del agua en la noche",
-          text: "En las noches sin luna, en bahías protegidas de Barú como Portonaito, el agua se enciende con destellos azules de luz neón al agitarla. Esto ocurre gracias a millones de microorganismos dinoflagelados que generan bioluminiscencia natural."
+          title: "The Bioluminescent Portonaito Phenomenon",
+          text: "On moonless nights, protected estuaries in Barú ignite with bioluminescent dinoflagellates. Agitating the warm seawater triggers enzymatic luciferean reactions, turning every movement into shimmering turquoise starlight."
         },
         {
-          title: "El origen del arroz de coco 'titoté'",
-          text: "El acompañamiento tradicional de las playas de Barú es el arroz con coco oscuro. No se prepara con azúcar quemada ni colorantes: se obtiene hirviendo la primera leche de coco virgen hasta que el aceite se separa y los sólidos de coco se caramelizan lentamente hasta formar el dorado 'titoté'."
+          title: "The Slow Alchemy of 'Titoté' Coconut Rice",
+          text: "Authentic coastal coconut rice contains zero artificial sugar or colorants. Freshly extracted coconut milk is reduced over open heat until the oils separate and the rich solids caramelize into microscopic hazel-golden curds called 'titoté'."
         }
       ]
     },
     {
       id: "manglares",
-      title: "Los Manglares y Ciénaga de La Boquilla",
-      subtitle: "Túneles de la Naturaleza y Herencia Afrocaribeña",
-      category: "Ecoturismo Ancestral & Santuario Biológico",
-      tag: "Ecoturismo Sagrado",
-      badgeColor: "bg-teal-100 text-teal-900 border-teal-300",
-      image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80",
-      imageCaption: "Navegación silenciosa en canoas de madera por túneles verdes",
-      description: "En la Ciénaga de la Virgen, al norte de la ciudad, se despliega un laberinto acuático ancestral custodiado por la comunidad pesquera afrodescendiente de La Boquilla. Los manglares forman bóvedas naturales y túneles verdes donde el agua tranquila refleja el cielo como un espejo.",
+      num: "05",
+      title: "La Boquilla Mangroves & Ciénaga de la Virgen",
+      subtitle: "Ancestral Waterways & Afro-Caribbean Ecological Heritage",
+      category: "Ecological Preserve & Cultural Heritage",
+      tag: "Ecological Sanctuary",
+      badgeColor: "text-teal-900 bg-teal-50 border-teal-200",
+      image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1400&q=85",
+      imageCaption: "Silent passage through natural cathedral tunnels aboard native wooden canoes",
+      description: "In the brackish estuary of Ciénaga de la Virgen, north of the city, lies an ancestral marine ecosystem protected by the Afro-descendant artisanal fishing village of La Boquilla. Red and black mangroves intertwine overhead to create serene cathedral corridors explored solely by wooden canoes.",
       highlights: [
-        "Travesía en canoas tradicionales de madera impulsadas por palancas de pescadores.",
-        "Paso por túneles naturales: 'Túnel del Amor', 'Túnel de la Felicidad' y 'Los Chánchalas'.",
-        "Avistamiento de más de 90 especies de aves playeras, garzas y martines pescadores.",
-        "Aprendizaje tradicional sobre técnicas ancestrales de pesca artesanal con atarraya."
+        "Silent journey propelled by native fishermen using traditional wooden push poles.",
+        "Voyage through iconic natural arched passages: 'Tunnel of Love' and 'Chánchalas'.",
+        "Birding habitat with over 90 migratory species from across the Americas.",
+        "Cultural immersion in pre-Columbian cast-net fishing techniques."
       ],
       curiousFacts: [
         {
-          title: "El escudo biológico que salvó a Cartagena",
-          text: "Las intrincadas raíces de los manglares rojos y negros actúan como un rompeolas natural gigantesco: amortiguan hasta el 70% de la energía del oleaje de huracanes y tormentas tropicales, protegiendo a Cartagena de inundaciones catastróficas."
+          title: "The Living Storm Shield of Cartagena",
+          text: "Intricate aerial roots of red mangroves serve as an ecological shock absorber, dissipating up to 70% of offshore wave and storm-surge energy, guarding Cartagena's low-lying coastline against hurricane damage."
         },
         {
-          title: "Plantas que 'beben' agua de mar y transpiran sal",
-          text: "El mangle negro y el mangle blanco poseen glándulas especiales en sus hojas que filtran y expulsan la sal marina. Si frotas el envés de una hoja de mangle, podrás ver y saborear auténticos granos cristalizados de sal pura producidos por el árbol."
+          title: "Trees That Drink Saltwater and Sweat Pure Crystals",
+          text: "Black and white mangroves thrive in hyper-saline waters via specialized root ultrafiltration and leaf glands that actively exude salt. Rubbing the underside of a leaf reveals pure edible salt crystals produced by the plant."
         },
         {
-          title: "Túneles bautizados con historias románticas",
-          text: "Los pescadores nativos bautizaron los pasadizos verdes con nombres pintorescos. El más famoso es el 'Túnel del Amor': una bóveda donde las ramas de los manglares de ambos lados se entrelazan creando una penumbra fresca donde la tradición local dice que un deseo de amor pedido en la canoa siempre se cumple."
+          title: "The Legend of the 'Tunnel of Love'",
+          text: "Local boatmen gave romantic monikers to each watery tunnel. The most legendary is the 'Tunnel of Love,' where dense interlaced branches filter tropical sunlight into cool emerald shadows; local lore holds that silent vows made inside always come true."
         }
       ]
     }
   ],
 
-  // Almacenamiento local de reservas
   reservationsKey: "cartagena_stopover_reservations",
   adminPinKey: "cartagena_admin_pin",
   defaultPin: "2026",
 
-  // Datos demo iniciales para que el usuario pueda ver el panel funcionando inmediatamente
+  // Initial Demo Data
   initialDemoReservations: [
     {
-      id: "CTG-2026-9041",
+      id: "CTG-EXP-9041",
       timestamp: "2026-10-30T14:35:00.000Z",
-      status: "Confirmado",
-      fullName: "Carlos Eduardo Mendoza",
-      passportId: "P-88421095",
-      country: "México",
-      email: "carlos.mendoza@viajes.mx",
-      phone: "+52 55 4912 3094",
+      status: "Confirmed",
+      fullName: "Alexander Sterling",
+      passportId: "US-88421095",
+      country: "United States",
+      email: "sterling.travels@globe.org",
+      phone: "+1 415 890 2341",
       adults: 2,
       children: 1,
       infants: 0,
@@ -188,62 +192,115 @@ const AppState = {
       arrivalTime: "09:30 AM",
       flightOut: "AA-1142 (American Airlines)",
       departureTime: "06:45 PM",
-      layoverDuration: "8 a 12 horas",
+      layoverDuration: "8 to 12 hours",
       tours: [
-        "Recogida en Aeropuerto CTG",
-        "Castillo de San Felipe (Panorámica)",
-        "Aviario Nacional de Colombia",
-        "Playa Barú & Almuerzo",
-        "Retorno puntual a aeropuerto"
+        "Airport Pick-up (Meet & Greet at CTG Arrivals)",
+        "San Felipe Castle Panoramic Drive-by",
+        "National Aviary of Colombia (Guided Ecological Walk)",
+        "Beach Break & Relaxation in Barú (Coastal Lunch)",
+        "Direct Airport Return & Drop-off"
       ],
-      tourLanguage: "Bilingüe (Español / Inglés)",
-      luggageOption: "Sí, necesito custodia para 3 maletas",
+      tourLanguage: "English",
+      luggageOption: "Yes, secure storage for 3 bags",
       luggageCount: 3,
-      lunchChoice: "Pescado Frito Caribeño Tradicional con Arroz con Coco",
-      dietaryNotes: "Sin mariscos con concha para el niño",
-      mobilityAssistance: "Ninguna",
-      paymentMethod: "Tarjeta de Crédito / Débito (Enlace Seguro)",
+      lunchChoice: "Traditional Caribbean Fried Fish & Coconut Rice",
+      dietaryNotes: "No shellfish for the child",
+      mobilityAssistance: "None",
+      paymentMethod: "Credit / Debit Card (Secure Online Link)",
       termsAccepted: true,
       hasSignature: true
     },
     {
-      id: "CTG-2026-8812",
+      id: "CTG-EXP-8812",
       timestamp: "2026-10-29T18:10:00.000Z",
-      status: "Pendiente",
-      fullName: "Sarah Elizabeth Jenkins",
-      passportId: "US-54190823",
-      country: "Estados Unidos",
-      email: "sarah.jenkins@traveler.com",
-      phone: "+1 415 890 2341",
+      status: "Pending",
+      fullName: "Elena Rostova",
+      passportId: "GB-54190823",
+      country: "United Kingdom",
+      email: "elena.rostova@voyages.co.uk",
+      phone: "+44 20 7946 0912",
       adults: 2,
       children: 0,
       infants: 0,
       arrivalDate: "2026-11-06",
-      flightIn: "DL-0678 (Delta)",
+      flightIn: "DL-0678 (Delta Air Lines)",
       arrivalTime: "11:15 AM",
       flightOut: "CM-0340 (Copa Airlines)",
       departureTime: "07:30 PM",
-      layoverDuration: "6 a 8 horas",
+      layoverDuration: "6 to 8 hours",
       tours: [
-        "Recogida en Aeropuerto CTG",
-        "Castillo de San Felipe (Panorámica)",
-        "Manglares de La Boquilla en canoa",
-        "Retorno puntual a aeropuerto"
+        "Airport Pick-up (Meet & Greet at CTG Arrivals)",
+        "San Felipe Castle Panoramic Drive-by",
+        "Mangrove Ecosystem Scenic View & Boat Passage",
+        "Direct Airport Return & Drop-off"
       ],
-      tourLanguage: "Inglés",
-      luggageOption: "No, solo llevamos equipaje de mano en la van",
+      tourLanguage: "Bilingual (English / Spanish)",
+      luggageOption: "No, carry-on only in the private van",
       luggageCount: 0,
-      lunchChoice: "Opción Vegetariana / Vegana",
-      dietaryNotes: "Vegetariana estricta, sin lácteos",
-      mobilityAssistance: "Ninguna",
-      paymentMethod: "Efectivo al recibir en el aeropuerto (USD)",
+      lunchChoice: "Vegetarian / Vegan option",
+      dietaryNotes: "Strict vegan, dairy free",
+      mobilityAssistance: "None",
+      paymentMethod: "Cash upon airport greeting (USD)",
       termsAccepted: true,
       hasSignature: true
     }
   ]
 };
 
-// Inicialización de la base de datos local
+// ==========================================================================
+// PRELOADER & SCROLL REVEAL CONTROLLER
+// ==========================================================================
+
+function initPreloader() {
+  const preloader = document.getElementById("preloader");
+  const bar = document.getElementById("preloaderBar");
+  
+  if (bar) {
+    setTimeout(() => { bar.style.width = "45%"; }, 150);
+    setTimeout(() => { bar.style.width = "85%"; }, 500);
+    setTimeout(() => { bar.style.width = "100%"; }, 950);
+  }
+
+  const dismissPreloader = () => {
+    if (!preloader || preloader.classList.contains("loaded")) return;
+    setTimeout(() => {
+      preloader.classList.add("loaded");
+      initScrollAnimations();
+    }, 1100);
+  };
+
+  if (document.readyState === "complete") {
+    dismissPreloader();
+  } else {
+    window.addEventListener("load", dismissPreloader);
+    setTimeout(dismissPreloader, 2200); // Fallback guarantee
+  }
+}
+
+function initScrollAnimations() {
+  const revealElements = document.querySelectorAll(".reveal-on-scroll, .reveal-fade-in, .reveal-slide-left, .reveal-slide-right");
+  
+  if (!("IntersectionObserver" in window)) {
+    revealElements.forEach(el => el.classList.add("is-revealed"));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-revealed");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    rootMargin: "0px 0px -60px 0px",
+    threshold: 0.12
+  });
+
+  revealElements.forEach(el => observer.observe(el));
+}
+
+// Storage initializations
 function initStorage() {
   if (!localStorage.getItem(AppState.reservationsKey)) {
     localStorage.setItem(AppState.reservationsKey, JSON.stringify(AppState.initialDemoReservations));
@@ -253,18 +310,16 @@ function initStorage() {
   }
 }
 
-// Obtener reservas
 function getReservations() {
   try {
     const raw = localStorage.getItem(AppState.reservationsKey);
     return raw ? JSON.parse(raw) : [];
   } catch (e) {
-    console.error("Error al leer reservas:", e);
+    console.error("Storage read error:", e);
     return [];
   }
 }
 
-// Guardar reserva nueva
 function saveReservation(reservation) {
   const current = getReservations();
   current.unshift(reservation);
@@ -272,7 +327,6 @@ function saveReservation(reservation) {
   return reservation;
 }
 
-// Actualizar estado de reserva
 function updateReservationStatus(id, newStatus) {
   const current = getReservations();
   const index = current.findIndex(r => r.id === id);
@@ -284,9 +338,8 @@ function updateReservationStatus(id, newStatus) {
   }
 }
 
-// Eliminar reserva
 function deleteReservation(id) {
-  if (!confirm(`¿Estás seguro de eliminar la reserva con código ${id}? Esta acción no se puede deshacer.`)) {
+  if (!confirm(`Are you certain you wish to delete reservation record ${id}?`)) {
     return;
   }
   const current = getReservations();
@@ -296,7 +349,7 @@ function deleteReservation(id) {
   updateAdminStats();
 }
 
-// Renderizar las 5 secciones de destinos con datos curiosos enriquecidos
+// Render Destinations (Editorial Aesthetic)
 function renderDestinations() {
   const container = document.getElementById("destinationsContainer");
   if (!container) return;
@@ -304,89 +357,88 @@ function renderDestinations() {
   container.innerHTML = AppState.destinations.map((dest, index) => {
     const isEven = index % 2 === 0;
     return `
-      <article id="dest-${dest.id}" class="reveal-item bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-100 transition-all duration-500 hover:shadow-2xl">
+      <article id="dest-${dest.id}" class="reveal-on-scroll editorial-card rounded-2xl overflow-hidden mb-16">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
           
-          <!-- Columna Imagen -->
-          <div class="lg:col-span-5 relative min-h-[340px] lg:min-h-full overflow-hidden ${isEven ? 'lg:order-1' : 'lg:order-2'}">
+          <!-- Image Column -->
+          <div class="lg:col-span-5 relative min-h-[360px] lg:min-h-full overflow-hidden ${isEven ? 'lg:order-1' : 'lg:order-2'}">
             <img 
               src="${dest.image}" 
               alt="${dest.title}" 
               loading="lazy"
-              class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+              class="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
               onerror="this.src='https://images.unsplash.com/photo-1583531352515-8884af319dc1?auto=format&fit=crop&w=1200&q=80'"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-black/20"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#08131F]/85 via-[#08131F]/20 to-transparent"></div>
             
-            <div class="absolute top-4 left-4">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase bg-white/95 text-sky-900 backdrop-blur shadow-sm">
-                <i class="fa-solid fa-compass text-amber-500"></i> ${dest.tag}
+            <div class="absolute top-5 left-5">
+              <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-mono-accent uppercase tracking-widest bg-white/95 text-slate-900 shadow-sm border border-slate-200">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#C5A880]"></span>
+                ${dest.tag}
               </span>
             </div>
 
-            <div class="absolute bottom-4 left-4 right-4 text-white">
-              <p class="text-xs text-sky-200 uppercase tracking-widest font-semibold">${dest.category}</p>
-              <p class="text-sm italic text-white/90 drop-shadow">${dest.imageCaption}</p>
+            <div class="absolute bottom-5 left-5 right-5 text-white">
+              <span class="text-[10px] font-mono-accent uppercase tracking-[0.25em] text-[#C5A880] block mb-1">${dest.category}</span>
+              <p class="text-xs font-light text-slate-200 italic leading-snug">${dest.imageCaption}</p>
             </div>
           </div>
 
-          <!-- Columna Contenido & Datos Curiosos -->
-          <div class="lg:col-span-7 p-6 sm:p-8 lg:p-10 flex flex-col justify-between ${isEven ? 'lg:order-2' : 'lg:order-1'}">
+          <!-- Content & Curiosities Column -->
+          <div class="lg:col-span-7 p-6 sm:p-10 lg:p-12 flex flex-col justify-between ${isEven ? 'lg:order-2' : 'lg:order-1'}">
             <div>
-              <div class="flex items-center gap-2 mb-2">
-                <span class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md ${dest.badgeColor} border">
-                  Destino Clave #${index + 1}
+              <div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-3">
+                <span class="font-mono-accent text-xs font-semibold text-[#9F825B] tracking-widest uppercase">
+                  Destination Index · ${dest.num} / 05
                 </span>
-                <span class="text-xs text-slate-400 font-medium"><i class="fa-solid fa-clock"></i> Visita imprescindible</span>
+                <span class="text-xs text-slate-400 font-mono-accent">
+                  Stopover Certified Route
+                </span>
               </div>
 
-              <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display mb-1">
+              <h3 class="text-2xl sm:text-3xl font-normal text-slate-900 font-editorial-serif mb-2 leading-tight">
                 ${dest.title}
               </h3>
-              <p class="text-sky-700 font-medium text-sm sm:text-base mb-4">
+              <p class="text-slate-500 font-medium text-xs sm:text-sm uppercase tracking-wider mb-5">
                 ${dest.subtitle}
               </p>
 
-              <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+              <p class="text-slate-600 text-sm leading-relaxed mb-8 font-light">
                 ${dest.description}
               </p>
 
-              <!-- Aspectos Destacados -->
-              <div class="mb-6">
-                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3 flex items-center gap-2">
-                  <i class="fa-solid fa-star text-amber-500"></i> Experiencias incluidas en este punto
+              <!-- Inclusions -->
+              <div class="mb-8">
+                <h4 class="text-[11px] font-mono-accent font-bold uppercase tracking-widest text-slate-400 mb-3">
+                  Key Itinerary Elements
                 </h4>
                 <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   ${dest.highlights.map(item => `
-                    <li class="flex items-start gap-2 text-xs sm:text-sm text-slate-700">
-                      <i class="fa-solid fa-circle-check text-emerald-500 mt-1 shrink-0"></i>
-                      <span>${item}</span>
+                    <li class="flex items-start gap-2.5 text-xs text-slate-700">
+                      <span class="text-[#C5A880] mt-0.5 shrink-0 font-bold">—</span>
+                      <span class="font-light">${item}</span>
                     </li>
                   `).join('')}
                 </ul>
               </div>
 
-              <!-- Bloque Especial: Datos Curiosos -->
-              <div class="mt-4 pt-4 border-t border-slate-100">
-                <div class="flex items-center justify-between mb-3">
-                  <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
-                    <span class="w-7 h-7 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center text-xs">
-                      <i class="fa-solid fa-lightbulb"></i>
-                    </span>
-                    <span>¿Sabías qué? — Datos Curiosos & Secretos</span>
+              <!-- Curiosities Section -->
+              <div class="pt-6 border-t border-slate-100">
+                <div class="flex items-center justify-between mb-4">
+                  <h4 class="text-xs font-mono-accent uppercase tracking-widest text-slate-900 font-bold flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#C5A880]"></span>
+                    Historical Secrets & Field Curiosities
                   </h4>
-                  <span class="text-xs font-medium text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
-                    3 Secretos
-                  </span>
+                  <span class="text-[10px] font-mono-accent text-slate-400">3 Insights</span>
                 </div>
 
-                <div class="space-y-2.5">
-                  ${dest.curiousFacts.map((fact, fIndex) => `
-                    <div class="fact-box p-3.5 rounded-xl border-l-4 border-emerald-500 bg-emerald-50/50 hover:bg-emerald-50 transition-colors">
-                      <p class="text-xs font-bold text-slate-800 mb-1 flex items-center gap-1.5">
-                        <i class="fa-solid fa-quote-left text-emerald-600 text-[10px]"></i> ${fact.title}
-                      </p>
-                      <p class="text-xs text-slate-600 leading-relaxed pl-3.5">
+                <div class="space-y-3">
+                  ${dest.curiousFacts.map(fact => `
+                    <div class="editorial-fact-block p-4 rounded-r-xl">
+                      <h5 class="text-xs font-bold text-slate-900 mb-1 font-serif tracking-wide">
+                        ${fact.title}
+                      </h5>
+                      <p class="text-xs text-slate-600 leading-relaxed font-light">
                         ${fact.text}
                       </p>
                     </div>
@@ -395,13 +447,13 @@ function renderDestinations() {
               </div>
             </div>
 
-            <div class="mt-8 pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
-              <a href="#bookingSection" onclick="selectDestinationInForm('${dest.id}')" class="inline-flex items-center gap-2 text-sm font-bold text-sky-700 hover:text-sky-900 transition-colors">
-                <span>Incluir en mi Stopover Tour</span>
-                <i class="fa-solid fa-arrow-right text-xs"></i>
+            <div class="mt-8 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+              <a href="#bookingSection" onclick="selectDestinationInForm('${dest.id}')" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#08131F] hover:text-[#9F825B] transition-colors border-b border-[#08131F] pb-0.5">
+                <span>Select for Stopover Itinerary</span>
+                <i class="fa-solid fa-arrow-right text-[10px]"></i>
               </a>
-              <span class="text-xs text-slate-400">
-                <i class="fa-solid fa-shield-halved text-emerald-600"></i> Asistencia y van privada climatizada
+              <span class="text-[11px] font-mono-accent text-slate-400">
+                Private Van Transfer Included
               </span>
             </div>
 
@@ -413,7 +465,7 @@ function renderDestinations() {
   }).join('');
 }
 
-// Configuración del Canvas de Firma Digital
+// Canvas Signature
 let signatureCanvas, signatureCtx;
 let isDrawing = false;
 let hasDrawnSignature = false;
@@ -423,15 +475,14 @@ function initSignatureCanvas() {
   if (!signatureCanvas) return;
   signatureCtx = signatureCanvas.getContext("2d");
 
-  // Ajustar resolución de retina/pantallas táctiles
   const rect = signatureCanvas.getBoundingClientRect();
   signatureCanvas.width = rect.width * 2;
   signatureCanvas.height = 140 * 2;
   signatureCtx.scale(2, 2);
-  signatureCtx.lineWidth = 2.5;
+  signatureCtx.lineWidth = 2;
   signatureCtx.lineCap = "round";
   signatureCtx.lineJoin = "round";
-  signatureCtx.strokeStyle = "#0a2540";
+  signatureCtx.strokeStyle = "#08131F";
 
   function getPos(e) {
     const r = signatureCanvas.getBoundingClientRect();
@@ -480,36 +531,33 @@ function clearSignature() {
   hasDrawnSignature = false;
 }
 
-// Control del Formulario Paso a Paso
+// Form Step Controller
 let currentStep = 1;
 const totalSteps = 5;
 
 function setStep(step) {
   if (step < 1 || step > totalSteps) return;
 
-  // Validación básica del paso 1 antes de avanzar
   if (step > 1 && currentStep === 1) {
     const fullName = document.getElementById("passengerName")?.value.trim();
     const email = document.getElementById("passengerEmail")?.value.trim();
     const phone = document.getElementById("passengerPhone")?.value.trim();
     if (!fullName || !email || !phone) {
-      alert("Por favor completa los campos principales de contacto (Nombre, Correo y WhatsApp) antes de continuar.");
+      alert("Please provide the lead passenger contact information (Full Name, Email, and WhatsApp) to proceed.");
       return;
     }
   }
 
-  // Validación básica del paso 2
   if (step > 2 && currentStep === 2) {
     const arrivalDate = document.getElementById("arrivalDate")?.value;
     if (!arrivalDate) {
-      alert("Por favor indica la fecha de llegada de tu vuelo a Cartagena.");
+      alert("Please specify the scheduled flight arrival date in Cartagena.");
       return;
     }
   }
 
   currentStep = step;
 
-  // Ocultar todos los pasos
   for (let i = 1; i <= totalSteps; i++) {
     const stepEl = document.getElementById(`formStep${i}`);
     const tabEl = document.getElementById(`tabStep${i}`);
@@ -524,56 +572,41 @@ function setStep(step) {
     }
     if (tabEl) {
       if (i === currentStep) {
-        tabEl.className = "flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-sky-600 text-white shadow-md transition-all";
+        tabEl.className = "flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono-accent font-bold uppercase tracking-wider bg-[#08131F] text-white shadow-sm";
       } else if (i < currentStep) {
-        tabEl.className = "flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-medium bg-emerald-100 text-emerald-800 transition-all cursor-pointer";
+        tabEl.className = "flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono-accent font-medium uppercase tracking-wider bg-emerald-50 text-emerald-900 border border-emerald-200 cursor-pointer";
       } else {
-        tabEl.className = "flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-medium bg-slate-100 text-slate-500 hover:bg-slate-200 transition-all cursor-pointer";
+        tabEl.className = "flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono-accent font-medium uppercase tracking-wider bg-slate-100 text-slate-500 hover:bg-slate-200 cursor-pointer";
       }
     }
   }
 
-  // Scroll suave al inicio del formulario
   const formBox = document.getElementById("bookingSection");
   if (formBox) {
     formBox.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  // Redimensionar canvas si entramos al paso 5
   if (currentStep === 5) {
     setTimeout(initSignatureCanvas, 150);
   }
 }
 
-function nextStep() {
-  setStep(currentStep + 1);
-}
+function nextStep() { setStep(currentStep + 1); }
+function prevStep() { setStep(currentStep - 1); }
 
-function prevStep() {
-  setStep(currentStep - 1);
-}
-
-// Preseleccionar destino desde las cards
 function selectDestinationInForm(destId) {
   const formSection = document.getElementById("bookingSection");
-  if (formSection) {
-    formSection.scrollIntoView({ behavior: "smooth" });
-  }
+  if (formSection) formSection.scrollIntoView({ behavior: "smooth" });
   setStep(3);
 }
 
-// Manejador del toggle de equipaje
 function handleLuggageToggle(needsLuggage) {
   const countContainer = document.getElementById("luggageCountContainer");
   if (!countContainer) return;
-  if (needsLuggage) {
-    countContainer.classList.remove("hidden");
-  } else {
-    countContainer.classList.add("hidden");
-  }
+  countContainer.classList.toggle("hidden", !needsLuggage);
 }
 
-// Envío del Formulario
+// Form Submission
 function handleBookingSubmit(event) {
   event.preventDefault();
 
@@ -582,61 +615,56 @@ function handleBookingSubmit(event) {
   const country = document.getElementById("passengerCountry")?.value.trim();
   const email = document.getElementById("passengerEmail")?.value.trim();
   const phone = document.getElementById("passengerPhone")?.value.trim();
-  
+
   const adults = parseInt(document.getElementById("partyAdults")?.value || "1", 10);
   const children = parseInt(document.getElementById("partyChildren")?.value || "0", 10);
   const infants = parseInt(document.getElementById("partyInfants")?.value || "0", 10);
 
   const arrivalDate = document.getElementById("arrivalDate")?.value || "";
-  const flightIn = document.getElementById("flightIn")?.value.trim() || "No especificado";
+  const flightIn = document.getElementById("flightIn")?.value.trim() || "Unspecified";
   const arrivalTime = document.getElementById("arrivalTime")?.value || "";
-  const flightOut = document.getElementById("flightOut")?.value.trim() || "No especificado";
+  const flightOut = document.getElementById("flightOut")?.value.trim() || "Unspecified";
   const departureTime = document.getElementById("departureTime")?.value || "";
-  const layoverDuration = document.querySelector('input[name="layoverDuration"]:checked')?.value || "6 a 8 horas";
+  const layoverDuration = document.querySelector('input[name="layoverDuration"]:checked')?.value || "6 to 8 hours";
 
-  // Tours seleccionados
   const selectedTours = Array.from(document.querySelectorAll('input[name="tourItinerary"]:checked')).map(cb => cb.value);
-  const tourLanguage = document.querySelector('input[name="tourLanguage"]:checked')?.value || "Español";
+  const tourLanguage = document.querySelector('input[name="tourLanguage"]:checked')?.value || "English";
 
-  // Servicios
   const luggageOption = document.querySelector('input[name="luggageOption"]:checked')?.value || "No";
   const luggageCount = parseInt(document.getElementById("luggageCount")?.value || "0", 10);
-  const lunchChoice = document.querySelector('input[name="lunchChoice"]:checked')?.value || "Pescado Frito Caribeño Tradicional con Arroz con Coco";
-  const dietaryNotes = document.getElementById("dietaryNotes")?.value.trim() || "Ninguna";
-  const mobilityAssistance = document.querySelector('input[name="mobilityAssistance"]:checked')?.value || "Ninguna";
+  const lunchChoice = document.querySelector('input[name="lunchChoice"]:checked')?.value || "Traditional Caribbean Fried Fish & Coconut Rice";
+  const dietaryNotes = document.getElementById("dietaryNotes")?.value.trim() || "None";
+  const mobilityAssistance = document.querySelector('input[name="mobilityAssistance"]:checked')?.value || "None";
 
-  // Pago
-  const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked')?.value || "Tarjeta";
+  const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked')?.value || "Credit Card";
   const termsAccepted = document.getElementById("termsAccepted")?.checked;
 
   if (!fullName || !email || !phone) {
-    alert("Por favor completa los campos principales de contacto.");
+    alert("Please fill in lead passenger contact details.");
     setStep(1);
     return;
   }
 
   if (!termsAccepted) {
-    alert("Debes aceptar los Términos y Condiciones de sincronización de escala para continuar.");
+    alert("Please accept the Layover Flight Synchronization Terms to confirm.");
     return;
   }
 
-  // Guardar firma como imagen DataURL
   let signatureData = "";
   if (signatureCanvas && hasDrawnSignature) {
     signatureData = signatureCanvas.toDataURL("image/png");
   }
 
-  // Generar ID único
   const randomSuffix = Math.floor(1000 + Math.random() * 9000);
-  const bookingId = `CTG-2026-${randomSuffix}`;
+  const bookingId = `CTG-EXP-${randomSuffix}`;
 
   const newReservation = {
     id: bookingId,
     timestamp: new Date().toISOString(),
-    status: "Confirmado",
+    status: "Confirmed",
     fullName,
-    passportId: passportId || "Pendiente en van",
-    country: country || "No indicado",
+    passportId: passportId || "To be confirmed on arrival",
+    country: country || "Unspecified",
     email,
     phone,
     adults,
@@ -648,9 +676,9 @@ function handleBookingSubmit(event) {
     flightOut,
     departureTime,
     layoverDuration,
-    tours: selectedTours.length > 0 ? selectedTours : ["Recorrido Stopover Completo Cartagena"],
+    tours: selectedTours.length > 0 ? selectedTours : ["Comprehensive Stopover Route"],
     tourLanguage,
-    luggageOption: luggageOption.includes("Sí") ? `Sí (${luggageCount} maletas)` : "Solo equipaje de mano",
+    luggageOption: luggageOption.includes("Yes") ? `Yes (${luggageCount} bags)` : "Carry-on in vehicle",
     luggageCount,
     lunchChoice,
     dietaryNotes,
@@ -661,19 +689,14 @@ function handleBookingSubmit(event) {
     signatureImage: signatureData
   };
 
-  // Guardar en LocalStorage
   saveReservation(newReservation);
-
-  // Mostrar modal de confirmación con confeti
   showConfirmationModal(newReservation);
 
-  // Resetear formulario
   document.getElementById("bookingForm").reset();
   clearSignature();
   setStep(1);
 }
 
-// Modal de Confirmación
 function showConfirmationModal(res) {
   const modal = document.getElementById("confirmationModal");
   if (!modal) return;
@@ -682,17 +705,16 @@ function showConfirmationModal(res) {
   document.getElementById("confirmPassengerName").textContent = res.fullName;
   document.getElementById("confirmDate").textContent = res.arrivalDate;
   document.getElementById("confirmFlightIn").textContent = res.flightIn;
-  document.getElementById("confirmParty").textContent = `${res.adults} Adulto(s)` + (res.children ? `, ${res.children} Niño(s)` : '');
+  document.getElementById("confirmParty").textContent = `${res.adults} Adult(s)` + (res.children ? `, ${res.children} Child(ren)` : '');
   document.getElementById("confirmLunch").textContent = res.lunchChoice;
 
   modal.classList.remove("hidden");
   modal.classList.add("flex");
 
-  // Lanzar confeti si la librería está disponible
   if (typeof confetti === "function") {
     confetti({
-      particleCount: 80,
-      spread: 70,
+      particleCount: 70,
+      spread: 60,
       origin: { y: 0.6 }
     });
   }
@@ -707,12 +729,11 @@ function closeConfirmationModal() {
 }
 
 // ==========================================================================
-// PANEL EXCLUSIVO DEL PROPIETARIO / ADMIN
+// PRIVATE OWNER / ADMINISTRATIVE RESPONSES PORTAL
 // ==========================================================================
 
 let isAdminLoggedIn = false;
 
-// Abrir modal de login PIN
 function openAdminAuthModal() {
   if (isAdminLoggedIn) {
     openAdminDashboard();
@@ -738,7 +759,6 @@ function closeAdminAuthModal() {
   }
 }
 
-// Validar PIN ingresado
 function verifyAdminPin() {
   const pinInput = document.getElementById("adminPinInput");
   const enteredPin = pinInput ? pinInput.value.trim() : "";
@@ -749,19 +769,16 @@ function verifyAdminPin() {
     closeAdminAuthModal();
     openAdminDashboard();
   } else {
-    alert("PIN incorrecto. Por favor verifica e intenta de nuevo. (PIN maestro por defecto: 2026)");
+    alert("Incorrect Security PIN. (Master PIN default: 2026)");
     if (pinInput) pinInput.value = "";
   }
 }
 
-// Abrir Dashboard de Administración
 function openAdminDashboard() {
   const panel = document.getElementById("adminDashboardModal");
   if (!panel) return;
-
   panel.classList.remove("hidden");
   panel.classList.add("flex");
-
   updateAdminStats();
   renderAdminTable();
 }
@@ -774,25 +791,17 @@ function closeAdminDashboard() {
   }
 }
 
-function logoutAdmin() {
-  isAdminLoggedIn = false;
-  closeAdminDashboard();
-  alert("Has cerrado sesión como administrador.");
-}
-
-// Actualizar contadores y métricas del admin
 function updateAdminStats() {
   const reservations = getReservations();
   const totalBookings = reservations.length;
-  
   let totalPassengers = 0;
   let pendingCount = 0;
   let confirmedCount = 0;
 
   reservations.forEach(r => {
     totalPassengers += (r.adults || 0) + (r.children || 0) + (r.infants || 0);
-    if (r.status === "Pendiente") pendingCount++;
-    if (r.status === "Confirmado") confirmedCount++;
+    if (r.status === "Pending") pendingCount++;
+    if (r.status === "Confirmed") confirmedCount++;
   });
 
   const totalEl = document.getElementById("adminStatTotal");
@@ -806,14 +815,13 @@ function updateAdminStats() {
   if (confirmedEl) confirmedEl.textContent = confirmedCount;
 }
 
-// Renderizar tabla de respuestas
 function renderAdminTable() {
   const tableBody = document.getElementById("adminTableBody");
   if (!tableBody) return;
 
   const reservations = getReservations();
   const searchTerm = (document.getElementById("adminSearchInput")?.value || "").toLowerCase();
-  const statusFilter = document.getElementById("adminStatusFilter")?.value || "TODOS";
+  const statusFilter = document.getElementById("adminStatusFilter")?.value || "ALL";
 
   const filtered = reservations.filter(r => {
     const matchesSearch = 
@@ -823,8 +831,7 @@ function renderAdminTable() {
       (r.flightIn && r.flightIn.toLowerCase().includes(searchTerm)) ||
       (r.phone && r.phone.toLowerCase().includes(searchTerm));
 
-    const matchesStatus = statusFilter === "TODOS" || r.status === statusFilter;
-
+    const matchesStatus = statusFilter === "ALL" || r.status === statusFilter;
     return matchesSearch && matchesStatus;
   });
 
@@ -832,9 +839,8 @@ function renderAdminTable() {
     tableBody.innerHTML = `
       <tr>
         <td colspan="7" class="py-12 text-center text-slate-400">
-          <i class="fa-solid fa-inbox text-4xl mb-3 block text-slate-300"></i>
-          <p class="font-medium text-base">No hay respuestas que coincidan con la búsqueda.</p>
-          <p class="text-xs text-slate-400">Las reservas enviadas desde el formulario web aparecerán aquí en tiempo real.</p>
+          <p class="font-mono-accent text-xs uppercase tracking-widest mb-1">No Matching Expeditions Found</p>
+          <p class="text-xs text-slate-400">Reservations completed on the web portal synchronize here in real time.</p>
         </td>
       </tr>
     `;
@@ -843,90 +849,83 @@ function renderAdminTable() {
 
   tableBody.innerHTML = filtered.map(r => {
     const statusClasses = {
-      "Confirmado": "bg-emerald-100 text-emerald-800 border-emerald-300",
-      "Pendiente": "bg-amber-100 text-amber-800 border-amber-300",
-      "En Tour": "bg-sky-100 text-sky-800 border-sky-300",
-      "Finalizado": "bg-slate-100 text-slate-700 border-slate-300",
-      "Cancelado": "bg-rose-100 text-rose-800 border-rose-300"
-    }[r.status] || "bg-slate-100 text-slate-800";
+      "Confirmed": "bg-emerald-50 text-emerald-900 border-emerald-300",
+      "Pending": "bg-amber-50 text-amber-900 border-amber-300",
+      "In Tour": "bg-sky-50 text-sky-900 border-sky-300",
+      "Completed": "bg-slate-100 text-slate-700 border-slate-300",
+      "Cancelled": "bg-rose-50 text-rose-900 border-rose-300"
+    }[r.status] || "bg-slate-100 text-slate-800 border-slate-200";
 
     const cleanPhone = (r.phone || "").replace(/[^0-9]/g, "");
 
     return `
-      <tr class="border-b border-slate-100 hover:bg-sky-50/40 transition-colors">
-        <!-- Código & Fecha -->
-        <td class="py-3 px-4">
-          <div class="font-bold text-sky-900 text-sm">${r.id}</div>
-          <div class="text-[11px] text-slate-400">${new Date(r.timestamp).toLocaleDateString()} ${new Date(r.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+      <tr class="border-b border-slate-100 hover:bg-slate-50/70 transition-colors">
+        <td class="py-3 px-4 font-mono-accent text-xs">
+          <div class="font-bold text-[#08131F]">${r.id}</div>
+          <div class="text-[10px] text-slate-400">${new Date(r.timestamp).toLocaleDateString()}</div>
         </td>
 
-        <!-- Pasajero & Contacto -->
-        <td class="py-3 px-4">
-          <div class="font-semibold text-slate-900 text-sm">${r.fullName}</div>
-          <div class="text-xs text-slate-500">${r.country} · DNI/Pas: ${r.passportId}</div>
+        <td class="py-3 px-4 text-xs">
+          <div class="font-bold text-slate-900 font-serif">${r.fullName}</div>
+          <div class="text-[11px] text-slate-500">${r.country} · ID: ${r.passportId}</div>
           <div class="flex items-center gap-2 mt-1">
-            <a href="mailto:${r.email}" class="text-[11px] text-sky-600 hover:underline flex items-center gap-1">
-              <i class="fa-solid fa-envelope text-[10px]"></i> ${r.email}
+            <a href="mailto:${r.email}" class="text-[10px] text-sky-700 hover:underline">
+              ${r.email}
             </a>
             ${cleanPhone ? `
-              <a href="https://wa.me/${cleanPhone}?text=Hola%20${encodeURIComponent(r.fullName)},%20te%20escribimos%20de%20Cartagena%20Stopover%20Adventure%20sobre%20tu%20reserva%20${r.id}" target="_blank" class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-bold hover:bg-emerald-200">
-                <i class="fa-brands fa-whatsapp"></i> Chat
+              <a href="https://wa.me/${cleanPhone}?text=Hello%20${encodeURIComponent(r.fullName)},%20we%20are%20contacting%20you%20from%20Cartagena%20Stopover%20Adventure%20regarding%20reservation%20${r.id}" target="_blank" class="px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-900 text-[10px] font-bold hover:bg-emerald-200">
+                WhatsApp
               </a>
             ` : ''}
           </div>
         </td>
 
-        <!-- Vuelos & Escala -->
-        <td class="py-3 px-4">
-          <div class="text-xs font-semibold text-slate-800"><i class="fa-solid fa-plane-arrival text-sky-600"></i> ${r.flightIn}</div>
-          <div class="text-[11px] text-slate-500">Llegada: ${r.arrivalDate} (${r.arrivalTime || 'Hora no esp.'})</div>
-          <div class="text-[11px] text-slate-500"><i class="fa-solid fa-plane-departure text-amber-600"></i> Salida: ${r.departureTime || 'No esp.'}</div>
-          <span class="inline-block mt-1 px-2 py-0.5 rounded text-[10px] font-medium bg-slate-100 text-slate-700">
-            Escala: ${r.layoverDuration}
+        <td class="py-3 px-4 text-xs font-mono-accent">
+          <div class="font-semibold text-slate-800">${r.flightIn}</div>
+          <div class="text-[11px] text-slate-500">In: ${r.arrivalDate} (${r.arrivalTime || 'TBD'})</div>
+          <div class="text-[11px] text-slate-500">Out: ${r.departureTime || 'TBD'}</div>
+          <span class="inline-block mt-0.5 px-2 py-0.5 rounded text-[10px] bg-slate-100 text-slate-700">
+            ${r.layoverDuration}
           </span>
         </td>
 
-        <!-- Pax & Menú -->
         <td class="py-3 px-4 text-xs">
-          <div class="font-semibold text-slate-800">${r.adults} Ad + ${r.children} Niñ</div>
+          <div class="font-bold text-slate-800">${r.adults} Ad + ${r.children} Ch</div>
           <div class="text-[11px] text-slate-600 truncate max-w-[150px]" title="${r.lunchChoice}">${r.lunchChoice}</div>
-          <div class="text-[10px] text-slate-400 mt-0.5"><i class="fa-solid fa-suitcase"></i> ${r.luggageOption}</div>
+          <div class="text-[10px] font-mono-accent text-slate-400 mt-0.5">${r.luggageOption}</div>
         </td>
 
-        <!-- Idioma y Pago -->
-        <td class="py-3 px-4 text-xs">
-          <div class="font-medium text-slate-700"><i class="fa-solid fa-language text-sky-500"></i> ${r.tourLanguage}</div>
-          <div class="text-[11px] text-slate-500">${r.paymentMethod}</div>
+        <td class="py-3 px-4 text-xs font-mono-accent">
+          <div class="font-medium text-slate-700">${r.tourLanguage}</div>
+          <div class="text-[10px] text-slate-400">${r.paymentMethod}</div>
         </td>
 
-        <!-- Estado Selector -->
         <td class="py-3 px-4">
           <select 
             onchange="updateReservationStatus('${r.id}', this.value)"
-            class="text-xs font-semibold px-2 py-1 rounded-full border ${statusClasses} cursor-pointer focus:outline-none focus:ring-2 focus:ring-sky-500"
+            class="text-[11px] font-mono-accent font-bold px-2 py-1 rounded-full border ${statusClasses} cursor-pointer focus:outline-none"
           >
-            <option value="Confirmado" ${r.status === 'Confirmado' ? 'selected' : ''}>Confirmado</option>
-            <option value="Pendiente" ${r.status === 'Pendiente' ? 'selected' : ''}>Pendiente</option>
-            <option value="En Tour" ${r.status === 'En Tour' ? 'selected' : ''}>En Tour</option>
-            <option value="Finalizado" ${r.status === 'Finalizado' ? 'selected' : ''}>Finalizado</option>
-            <option value="Cancelado" ${r.status === 'Cancelado' ? 'selected' : ''}>Cancelado</option>
+            <option value="Confirmed" ${r.status === 'Confirmed' ? 'selected' : ''}>Confirmed</option>
+            <option value="Pending" ${r.status === 'Pending' ? 'selected' : ''}>Pending</option>
+            <option value="In Tour" ${r.status === 'In Tour' ? 'selected' : ''}>In Tour</option>
+            <option value="Completed" ${r.status === 'Completed' ? 'selected' : ''}>Completed</option>
+            <option value="Cancelled" ${r.status === 'Cancelled' ? 'selected' : ''}>Cancelled</option>
           </select>
         </td>
 
-        <!-- Acciones -->
         <td class="py-3 px-4 text-right">
           <div class="flex items-center justify-end gap-1.5">
             <button 
               onclick="viewReservationDetail('${r.id}')"
-              class="px-2.5 py-1.5 rounded-lg bg-sky-50 text-sky-700 hover:bg-sky-100 transition-colors text-xs font-bold"
-              title="Ver expediente completo"
+              class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 hover:bg-slate-200 text-xs font-bold font-mono-accent"
+              title="Inspect Dossier"
             >
-              <i class="fa-solid fa-eye"></i> Detalle
+              View
             </button>
             <button 
               onclick="deleteReservation('${r.id}')"
-              class="p-1.5 rounded-lg text-rose-500 hover:bg-rose-50 transition-colors text-xs"
-              title="Eliminar registro"
+              class="p-1 rounded-lg text-rose-500 hover:bg-rose-50 text-xs"
+              title="Delete Record"
             >
               <i class="fa-solid fa-trash-can"></i>
             </button>
@@ -937,7 +936,6 @@ function renderAdminTable() {
   }).join('');
 }
 
-// Ver Detalle Completo de una Reserva (Dossier Oficial)
 function viewReservationDetail(id) {
   const reservations = getReservations();
   const res = reservations.find(r => r.id === id);
@@ -949,102 +947,93 @@ function viewReservationDetail(id) {
 
   content.innerHTML = `
     <div class="space-y-6">
-      <!-- Encabezado del Dossier -->
       <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-200">
         <div>
-          <span class="text-xs font-bold uppercase tracking-wider text-sky-700">Expediente Oficial de Stopover</span>
-          <h4 class="text-2xl font-black text-slate-900 font-display">${res.id}</h4>
-          <p class="text-xs text-slate-500">Recibido: ${new Date(res.timestamp).toLocaleString()}</p>
+          <span class="text-[10px] font-mono-accent uppercase tracking-widest text-[#9F825B]">Official Dossier</span>
+          <h4 class="text-2xl font-normal text-slate-900 font-editorial-serif">${res.id}</h4>
+          <p class="text-xs text-slate-400 font-mono-accent">Received: ${new Date(res.timestamp).toLocaleString()}</p>
         </div>
-        <div class="flex items-center gap-2">
-          <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-sky-100 text-sky-800 border border-sky-300">
-            Estado: ${res.status}
-          </span>
-        </div>
+        <span class="px-3 py-1 rounded-full text-xs font-mono-accent font-bold uppercase tracking-wider bg-slate-100 text-slate-800 border border-slate-200">
+          Status: ${res.status}
+        </span>
       </div>
 
-      <!-- Sección 1: Pasajero -->
-      <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
-        <h5 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3 flex items-center gap-2">
-          <i class="fa-solid fa-user text-sky-600"></i> 1. Información del Pasajero Principal
+      <!-- Section 1 -->
+      <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+        <h5 class="text-[11px] font-mono-accent uppercase tracking-widest text-slate-500 mb-3 font-bold">
+          1. Lead Passenger Information
         </h5>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-xs">
-          <div><strong class="text-slate-500 block">Nombre Completo:</strong> <span class="text-slate-900 font-semibold text-sm">${res.fullName}</span></div>
-          <div><strong class="text-slate-500 block">Pasaporte / DNI:</strong> <span class="text-slate-900 font-medium">${res.passportId}</span></div>
-          <div><strong class="text-slate-500 block">Nacionalidad / País:</strong> <span class="text-slate-900 font-medium">${res.country}</span></div>
-          <div><strong class="text-slate-500 block">Correo Electrónico:</strong> <a href="mailto:${res.email}" class="text-sky-600 underline">${res.email}</a></div>
-          <div><strong class="text-slate-500 block">Teléfono / WhatsApp:</strong> <span class="text-slate-900 font-medium">${res.phone}</span></div>
-          <div><strong class="text-slate-500 block">Tamaño del Grupo:</strong> <span class="text-slate-900 font-bold">${res.adults} Adultos, ${res.children} Niños, ${res.infants} Infantes</span></div>
+          <div><strong class="text-slate-500 block">Full Name:</strong> <span class="text-slate-900 font-bold">${res.fullName}</span></div>
+          <div><strong class="text-slate-500 block">Passport / ID:</strong> <span class="text-slate-900 font-medium">${res.passportId}</span></div>
+          <div><strong class="text-slate-500 block">Nationality / Country:</strong> <span class="text-slate-900 font-medium">${res.country}</span></div>
+          <div><strong class="text-slate-500 block">Email Address:</strong> <a href="mailto:${res.email}" class="text-sky-700 underline">${res.email}</a></div>
+          <div><strong class="text-slate-500 block">Mobile / WhatsApp:</strong> <span class="text-slate-900 font-medium">${res.phone}</span></div>
+          <div><strong class="text-slate-500 block">Party Breakdown:</strong> <span class="text-slate-900 font-bold">${res.adults} Adults, ${res.children} Children, ${res.infants} Infants</span></div>
         </div>
       </div>
 
-      <!-- Sección 2: Vuelos y Escala -->
-      <div class="bg-sky-50/60 p-4 rounded-2xl border border-sky-200">
-        <h5 class="text-xs font-bold uppercase tracking-wider text-sky-900 mb-3 flex items-center gap-2">
-          <i class="fa-solid fa-plane text-sky-600"></i> 2. Detalles de Vuelo & Escala en Aeropuerto Rafael Núñez (CTG)
+      <!-- Section 2 -->
+      <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+        <h5 class="text-[11px] font-mono-accent uppercase tracking-widest text-slate-500 mb-3 font-bold">
+          2. Flight & Layover Synchronization (CTG)
         </h5>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-xs">
-          <div><strong class="text-slate-500 block">Fecha de Llegada:</strong> <span class="text-slate-900 font-bold">${res.arrivalDate}</span></div>
-          <div><strong class="text-slate-500 block">Vuelo de Llegada:</strong> <span class="text-slate-900 font-semibold">${res.flightIn}</span></div>
-          <div><strong class="text-slate-500 block">Hora de Llegada (Touchdown):</strong> <span class="text-slate-900 font-medium">${res.arrivalTime || 'No especificada'}</span></div>
-          <div><strong class="text-slate-500 block">Vuelo de Conexión:</strong> <span class="text-slate-900 font-semibold">${res.flightOut}</span></div>
-          <div><strong class="text-slate-500 block">Hora de Salida (Boarding):</strong> <span class="text-slate-900 font-medium">${res.departureTime || 'No especificada'}</span></div>
-          <div><strong class="text-slate-500 block">Duración de Escala:</strong> <span class="text-emerald-700 font-bold">${res.layoverDuration}</span></div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-xs font-mono-accent">
+          <div><strong class="text-slate-500 block">Arrival Date:</strong> <span class="text-slate-900 font-bold">${res.arrivalDate}</span></div>
+          <div><strong class="text-slate-500 block">Inbound Flight:</strong> <span class="text-slate-900 font-semibold">${res.flightIn}</span></div>
+          <div><strong class="text-slate-500 block">Touchdown:</strong> <span class="text-slate-900">${res.arrivalTime || 'TBD'}</span></div>
+          <div><strong class="text-slate-500 block">Connecting Flight:</strong> <span class="text-slate-900 font-semibold">${res.flightOut}</span></div>
+          <div><strong class="text-slate-500 block">Boarding Time:</strong> <span class="text-slate-900">${res.departureTime || 'TBD'}</span></div>
+          <div><strong class="text-slate-500 block">Total Layover:</strong> <span class="text-slate-900 font-bold">${res.layoverDuration}</span></div>
         </div>
       </div>
 
-      <!-- Sección 3: Destinos e Itinerario -->
-      <div class="bg-white p-4 rounded-2xl border border-slate-200">
-        <h5 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3 flex items-center gap-2">
-          <i class="fa-solid fa-map-location-dot text-amber-500"></i> 3. Ruta e Itinerario Solicitado
+      <!-- Section 3 -->
+      <div class="bg-white p-4 rounded-xl border border-slate-200">
+        <h5 class="text-[11px] font-mono-accent uppercase tracking-widest text-slate-500 mb-3 font-bold">
+          3. Requested Route & Languages
         </h5>
         <ul class="space-y-1.5 mb-3">
           ${(res.tours || []).map(t => `
             <li class="flex items-center gap-2 text-xs text-slate-700">
-              <i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i>
+              <span class="text-[#C5A880] font-bold">—</span>
               <span>${t}</span>
             </li>
           `).join('')}
         </ul>
-        <div class="text-xs text-slate-600">
-          <strong>Idioma del Guía:</strong> <span class="font-semibold text-slate-900">${res.tourLanguage}</span>
+        <div class="text-xs font-mono-accent text-slate-600">
+          Guide Language: <span class="font-bold text-slate-900">${res.tourLanguage}</span>
         </div>
       </div>
 
-      <!-- Sección 4: Comodidades & Alimentación -->
-      <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
-        <h5 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3 flex items-center gap-2">
-          <i class="fa-solid fa-utensils text-rose-500"></i> 4. Comodidades, Equipaje & Menú Playero
+      <!-- Section 4 -->
+      <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs">
+        <h5 class="text-[11px] font-mono-accent uppercase tracking-widest text-slate-500 mb-3 font-bold">
+          4. Amenities, Luggage & Coastal Lunch
         </h5>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-          <div><strong class="text-slate-500 block">Custodia de Equipaje:</strong> <span class="text-slate-900 font-medium">${res.luggageOption}</span></div>
-          <div><strong class="text-slate-500 block">Almuerzo Seleccionado:</strong> <span class="text-slate-900 font-semibold text-emerald-800">${res.lunchChoice}</span></div>
-          <div class="sm:col-span-2"><strong class="text-slate-500 block">Alergias o Restricciones:</strong> <span class="text-slate-900">${res.dietaryNotes || 'Ninguna'}</span></div>
-          <div class="sm:col-span-2"><strong class="text-slate-500 block">Asistencia de Movilidad:</strong> <span class="text-slate-900">${res.mobilityAssistance || 'Ninguna'}</span></div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div><strong class="text-slate-500 block">Luggage Storage:</strong> <span class="text-slate-900">${res.luggageOption}</span></div>
+          <div><strong class="text-slate-500 block">Lunch Menu Selected:</strong> <span class="text-slate-900 font-bold">${res.lunchChoice}</span></div>
+          <div class="sm:col-span-2"><strong class="text-slate-500 block">Allergies / Special Requests:</strong> <span class="text-slate-900">${res.dietaryNotes || 'None'}</span></div>
+          <div class="sm:col-span-2"><strong class="text-slate-500 block">Mobility Assistance:</strong> <span class="text-slate-900">${res.mobilityAssistance || 'None'}</span></div>
         </div>
       </div>
 
-      <!-- Sección 5: Método de Pago & Firma -->
-      <div class="bg-amber-50/50 p-4 rounded-2xl border border-amber-200">
-        <h5 class="text-xs font-bold uppercase tracking-wider text-amber-900 mb-3 flex items-center gap-2">
-          <i class="fa-solid fa-receipt text-amber-600"></i> 5. Pago & Confirmación
+      <!-- Section 5 -->
+      <div class="bg-amber-50/50 p-4 rounded-xl border border-amber-200 text-xs">
+        <h5 class="text-[11px] font-mono-accent uppercase tracking-widest text-amber-900 mb-3 font-bold">
+          5. Payment & Digital Signature
         </h5>
-        <div class="flex flex-wrap items-center justify-between gap-4 text-xs">
-          <div>
-            <strong class="text-slate-500 block">Método de Pago Elegido:</strong>
-            <span class="text-slate-900 font-bold text-sm">${res.paymentMethod}</span>
-          </div>
-          <div>
-            <strong class="text-slate-500 block">Términos de Escala Aceptados:</strong>
-            <span class="text-emerald-700 font-bold">✓ Sí, sincronizado con vuelo de conexión</span>
-          </div>
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div><strong class="text-slate-500 block">Payment Method:</strong> <span class="text-slate-900 font-bold">${res.paymentMethod}</span></div>
+          <div><strong class="text-slate-500 block">Flight Sync Guarantee:</strong> <span class="text-emerald-800 font-bold">Accepted</span></div>
         </div>
 
         ${res.signatureImage ? `
-          <div class="mt-4 pt-3 border-t border-amber-200/60">
-            <strong class="text-xs text-slate-500 block mb-1">Firma Digital del Pasajero:</strong>
+          <div class="mt-4 pt-3 border-t border-amber-200">
+            <strong class="text-[10px] font-mono-accent text-slate-500 block mb-1">Passenger Digital Signature:</strong>
             <div class="bg-white p-2 rounded-lg border border-slate-200 inline-block">
-              <img src="${res.signatureImage}" alt="Firma del pasajero" class="h-16 max-w-full object-contain" />
+              <img src="${res.signatureImage}" alt="Signature" class="h-14 max-w-full object-contain" />
             </div>
           </div>
         ` : ''}
@@ -1064,64 +1053,26 @@ function closeReservationDetailModal() {
   }
 }
 
-// Exportar respuestas a CSV para Excel
 function exportReservationsToCSV() {
   const reservations = getReservations();
   if (reservations.length === 0) {
-    alert("No hay reservas registradas para exportar.");
+    alert("No records available to export.");
     return;
   }
 
   const headers = [
-    "ID Reserva",
-    "Fecha Creación",
-    "Estado",
-    "Nombre Pasajero",
-    "Pasaporte/DNI",
-    "País",
-    "Correo",
-    "Teléfono/WhatsApp",
-    "Adultos",
-    "Niños",
-    "Infantes",
-    "Fecha Llegada",
-    "Vuelo Llegada",
-    "Hora Llegada",
-    "Vuelo Salida",
-    "Hora Salida",
-    "Duración Escala",
-    "Idioma Guía",
-    "Equipaje",
-    "Opción Almuerzo",
-    "Alergias",
-    "Asistencia Movilidad",
-    "Método Pago"
+    "Booking ID", "Timestamp", "Status", "Full Name", "Passport ID", "Country", "Email", "Phone",
+    "Adults", "Children", "Infants", "Arrival Date", "Flight In", "Arrival Time", "Flight Out",
+    "Departure Time", "Layover Duration", "Language", "Luggage", "Lunch Choice", "Dietary Notes", "Mobility", "Payment"
   ];
 
   const rows = reservations.map(r => [
-    `"${r.id}"`,
-    `"${r.timestamp}"`,
-    `"${r.status}"`,
-    `"${r.fullName.replace(/"/g, '""')}"`,
-    `"${r.passportId}"`,
-    `"${r.country}"`,
-    `"${r.email}"`,
-    `"${r.phone}"`,
-    r.adults,
-    r.children,
-    r.infants,
-    `"${r.arrivalDate}"`,
-    `"${r.flightIn}"`,
-    `"${r.arrivalTime}"`,
-    `"${r.flightOut}"`,
-    `"${r.departureTime}"`,
-    `"${r.layoverDuration}"`,
-    `"${r.tourLanguage}"`,
-    `"${r.luggageOption}"`,
-    `"${r.lunchChoice.replace(/"/g, '""')}"`,
-    `"${(r.dietaryNotes || '').replace(/"/g, '""')}"`,
-    `"${r.mobilityAssistance}"`,
-    `"${r.paymentMethod}"`
+    `"${r.id}"`, `"${r.timestamp}"`, `"${r.status}"`, `"${r.fullName.replace(/"/g, '""')}"`,
+    `"${r.passportId}"`, `"${r.country}"`, `"${r.email}"`, `"${r.phone}"`,
+    r.adults, r.children, r.infants, `"${r.arrivalDate}"`, `"${r.flightIn}"`, `"${r.arrivalTime}"`,
+    `"${r.flightOut}"`, `"${r.departureTime}"`, `"${r.layoverDuration}"`, `"${r.tourLanguage}"`,
+    `"${r.luggageOption}"`, `"${r.lunchChoice.replace(/"/g, '""')}"`, `"${(r.dietaryNotes || '').replace(/"/g, '""')}"`,
+    `"${r.mobilityAssistance}"`, `"${r.paymentMethod}"`
   ]);
 
   const csvContent = "\uFEFF" + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
@@ -1129,72 +1080,57 @@ function exportReservationsToCSV() {
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.setAttribute("href", url);
-  link.setAttribute("download", `reservas_cartagena_stopover_${new Date().toISOString().slice(0, 10)}.csv`);
+  link.setAttribute("download", `cartagena_stopover_expedition_${new Date().toISOString().slice(0, 10)}.csv`);
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
 }
 
-// Cambiar PIN de Administrador
 function promptChangeAdminPin() {
   const currentPin = localStorage.getItem(AppState.adminPinKey) || AppState.defaultPin;
-  const oldPin = prompt("Por favor ingresa el PIN actual:");
+  const oldPin = prompt("Enter current Master PIN:");
   if (oldPin === null) return;
-
   if (oldPin !== currentPin) {
-    alert("El PIN actual no coincide.");
+    alert("Incorrect current PIN.");
     return;
   }
-
-  const newPin = prompt("Ingresa el nuevo PIN de acceso (4 a 8 caracteres numéricos):");
+  const newPin = prompt("Enter new Security PIN (min 4 characters):");
   if (!newPin || newPin.trim().length < 4) {
-    alert("PIN inválido. Debe tener al menos 4 caracteres.");
+    alert("Invalid PIN format.");
     return;
   }
-
   localStorage.setItem(AppState.adminPinKey, newPin.trim());
-  alert("¡PIN maestro actualizado exitosamente!");
+  alert("Master PIN successfully updated.");
 }
 
-// Cargar datos demo de prueba
 function loadDemoData() {
-  if (confirm("¿Deseas restaurar las reservas de demostración en el sistema?")) {
+  if (confirm("Restore demo layover expeditions?")) {
     localStorage.setItem(AppState.reservationsKey, JSON.stringify(AppState.initialDemoReservations));
     updateAdminStats();
     renderAdminTable();
-    alert("Datos de demostración cargados exitosamente.");
   }
 }
 
 // ==========================================================================
-// SONIDO AMBIENTAL CARIBEÑO (Web Audio API Synthesizer)
+// AMBIENT OCEAN BREEZE (Web Audio API Synthesizer)
 // ==========================================================================
 
 let audioCtx = null;
 let isAudioPlaying = false;
-let waveGain = null;
 
 function toggleCaribbeanAudio() {
-  const btn = document.getElementById("audioToggleBtn");
   const icon = document.getElementById("audioIcon");
   const label = document.getElementById("audioLabel");
 
   if (!isAudioPlaying) {
     try {
-      if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-      if (audioCtx.state === "suspended") {
-        audioCtx.resume();
-      }
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === "suspended") audioCtx.resume();
 
-      // Sintetizador de ruido blanco filtrado simulando olas del mar caribeño
       const bufferSize = audioCtx.sampleRate * 2;
       const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
       const output = noiseBuffer.getChannelData(0);
-      for (let i = 0; i < bufferSize; i++) {
-        output[i] = Math.random() * 2 - 1;
-      }
+      for (let i = 0; i < bufferSize; i++) output[i] = Math.random() * 2 - 1;
 
       const whiteNoise = audioCtx.createBufferSource();
       whiteNoise.buffer = noiseBuffer;
@@ -1202,19 +1138,18 @@ function toggleCaribbeanAudio() {
 
       const filter = audioCtx.createBiquadFilter();
       filter.type = "lowpass";
-      filter.frequency.setValueAtTime(320, audioCtx.currentTime);
+      filter.frequency.setValueAtTime(300, audioCtx.currentTime);
 
-      // LFO para modular la frecuencia y simular el vaivén de las olas
       const lfo = audioCtx.createOscillator();
-      lfo.frequency.setValueAtTime(0.12, audioCtx.currentTime); // Ola cada ~8 segundos
+      lfo.frequency.setValueAtTime(0.12, audioCtx.currentTime);
       const lfoGain = audioCtx.createGain();
-      lfoGain.gain.setValueAtTime(220, audioCtx.currentTime);
+      lfoGain.gain.setValueAtTime(200, audioCtx.currentTime);
 
       lfo.connect(lfoGain);
       lfoGain.connect(filter.frequency);
 
-      waveGain = audioCtx.createGain();
-      waveGain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+      const waveGain = audioCtx.createGain();
+      waveGain.gain.setValueAtTime(0.1, audioCtx.currentTime);
 
       whiteNoise.connect(filter);
       filter.connect(waveGain);
@@ -1224,44 +1159,20 @@ function toggleCaribbeanAudio() {
       lfo.start();
 
       isAudioPlaying = true;
-      if (icon) icon.className = "fa-solid fa-volume-high text-amber-400";
-      if (label) label.textContent = "Olas del Mar (Activo)";
-      if (btn) btn.classList.add("bg-sky-800/80", "border-amber-400");
+      if (icon) icon.className = "fa-solid fa-volume-high text-[#C5A880]";
+      if (label) label.textContent = "Ocean Sound (Active)";
     } catch (e) {
-      console.warn("No se pudo iniciar el audio ambiental:", e);
+      console.warn("Audio unavailable:", e);
     }
   } else {
-    if (audioCtx && audioCtx.state === "running") {
-      audioCtx.suspend();
-    }
+    if (audioCtx && audioCtx.state === "running") audioCtx.suspend();
     isAudioPlaying = false;
     if (icon) icon.className = "fa-solid fa-volume-xmark text-slate-400";
-    if (label) label.textContent = "Sonido Olas";
-    if (btn) btn.classList.remove("bg-sky-800/80", "border-amber-400");
+    if (label) label.textContent = "Ocean Ambience";
   }
 }
 
-// Observador de Scroll para animaciones
-function initScrollObserver() {
-  const items = document.querySelectorAll(".reveal-item");
-  if (!("IntersectionObserver" in window)) {
-    items.forEach(el => el.classList.add("active"));
-    return;
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("active");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-
-  items.forEach(el => observer.observe(el));
-}
-
-// Atajo de teclado para administradores (Ctrl + Alt + A)
+// Global Keyboard Shortcut (Ctrl + Alt + A)
 window.addEventListener("keydown", (e) => {
   if (e.ctrlKey && e.altKey && (e.key === 'a' || e.key === 'A')) {
     e.preventDefault();
@@ -1269,21 +1180,17 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
-// Inicialización cuando el DOM esté listo
+// App Startup
 document.addEventListener("DOMContentLoaded", () => {
   initStorage();
+  initPreloader();
   renderDestinations();
   initSignatureCanvas();
-  initScrollObserver();
 
-  // Fecha mínima para el selector de llegada: hoy
   const todayStr = new Date().toISOString().split("T")[0];
   const dateInput = document.getElementById("arrivalDate");
   if (dateInput) {
     dateInput.min = todayStr;
     dateInput.value = todayStr;
   }
-
-  console.log("%c🌴 Cartagena Mágica & Stopover Tour Iniciado ✈️", "color: #0284c7; font-size: 16px; font-weight: bold;");
-  console.log("Acceso de Propietario / Admin disponible en el botón 'Admin' o con Ctrl+Alt+A (PIN por defecto: 2026)");
 });
