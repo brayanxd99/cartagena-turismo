@@ -8,10 +8,10 @@
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%2308131F'/><circle cx='50' cy='50' r='40' fill='none' stroke='%23C5A880' stroke-width='2'/><path d='M30,50 L70,50 M50,30 L50,70' stroke='%23C5A880' stroke-width='1.5'/></svg>" />
 
-  <!-- Google Fonts: Cinzel, Playfair Display, Plus Jakarta Sans, Space Mono -->
+  <!-- Google Fonts: Cormorant Garamond, EB Garamond, Cinzel, Pinyon Script, Courier Prime -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Pinyon+Script&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
@@ -34,10 +34,13 @@
             }
           },
           fontFamily: {
-            serif: ['"Cinzel"', '"Playfair Display"', 'Georgia', 'serif'],
-            display: ['"Playfair Display"', 'Georgia', 'serif'],
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            mono: ['"Space Mono"', 'monospace']
+            chronicle: ['"EB Garamond"', 'Georgia', 'serif'],
+            serif: ['"Cormorant Garamond"', '"Cinzel"', 'Georgia', 'serif'],
+            display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            calligraphy: ['"Pinyon Script"', 'cursive'],
+            script: ['"Pinyon Script"', 'cursive'],
+            sans: ['"EB Garamond"', 'Georgia', 'serif'],
+            mono: ['"Courier Prime"', '"Space Mono"', 'monospace']
           }
         }
       }
@@ -111,9 +114,9 @@
             <i class="fa-solid fa-compass text-sm"></i>
           </div>
           <div>
-            <span class="text-[9px] font-mono tracking-[0.25em] text-[#9F825B] uppercase block">Official Dispatch</span>
-            <span class="text-base font-serif tracking-wider font-bold text-[#08131F] uppercase">
-              Cartagena <span class="text-[#9F825B] font-light italic font-display">Expedition</span>
+            <span class="text-[9px] font-mono tracking-[0.25em] text-[#9F825B] uppercase block">Historical Chronicle Dispatch</span>
+            <span class="text-lg font-serif tracking-wider font-bold text-[#08131F]">
+              Cartagena <span class="font-calligraphy text-2xl text-[#9F825B] font-normal lowercase tracking-normal">de indias</span>
             </span>
           </div>
         </a>
@@ -207,7 +210,9 @@
 
           <h1 class="text-4xl sm:text-6xl lg:text-7xl font-normal font-serif tracking-tight leading-[1.08] mb-8 text-white">
             Cartagena de Indias <br/>
-            <span class="font-display italic font-light text-[#EADFCF]">The Stopover Expedition</span>
+            <span class="font-calligraphy text-4xl sm:text-6xl text-[#EADFCF] block mt-2 font-normal lowercase tracking-normal">
+              the historic stopover chronicle
+            </span>
           </h1>
 
           <p class="text-base sm:text-lg text-slate-300 font-light leading-relaxed mb-10 max-w-2xl">

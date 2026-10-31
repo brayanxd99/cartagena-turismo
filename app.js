@@ -396,14 +396,14 @@ function renderDestinations() {
                 </span>
               </div>
 
-              <h3 class="text-2xl sm:text-3xl font-normal text-slate-900 font-editorial-serif mb-2 leading-tight">
+              <h3 class="text-3xl sm:text-4xl font-normal text-slate-900 font-editorial-serif mb-1 leading-tight tracking-tight">
                 ${dest.title}
               </h3>
-              <p class="text-slate-500 font-medium text-xs sm:text-sm uppercase tracking-wider mb-5">
+              <p class="font-calligraphy text-2xl sm:text-3xl text-[#9F825B] mb-5 leading-relaxed tracking-normal font-normal">
                 ${dest.subtitle}
               </p>
 
-              <p class="text-slate-600 text-sm leading-relaxed mb-8 font-light">
+              <p class="text-slate-700 text-base sm:text-lg leading-relaxed mb-8 font-chronicle">
                 ${dest.description}
               </p>
 
@@ -414,9 +414,9 @@ function renderDestinations() {
                 </h4>
                 <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   ${dest.highlights.map(item => `
-                    <li class="flex items-start gap-2.5 text-xs text-slate-700">
+                    <li class="flex items-start gap-2.5 text-sm text-slate-700 font-chronicle">
                       <span class="text-[#C5A880] mt-0.5 shrink-0 font-bold">—</span>
-                      <span class="font-light">${item}</span>
+                      <span class="font-normal">${item}</span>
                     </li>
                   `).join('')}
                 </ul>
@@ -454,11 +454,11 @@ function renderDestinations() {
                     Archival Dispatch · Entry 01 of 03
                   </span>
 
-                  <h5 id="fact-title-${dest.id}" class="text-base font-bold text-slate-900 mb-2 font-serif tracking-wide pr-12 transition-opacity duration-200">
+                  <h5 id="fact-title-${dest.id}" class="text-lg sm:text-xl font-bold text-slate-900 mb-2 font-editorial-serif tracking-normal pr-12 transition-opacity duration-200">
                     ${dest.curiousFacts[0].title}
                   </h5>
 
-                  <p id="fact-text-${dest.id}" class="text-xs text-slate-600 leading-relaxed font-light transition-opacity duration-200">
+                  <p id="fact-text-${dest.id}" class="text-sm sm:text-base text-slate-700 leading-relaxed font-chronicle transition-opacity duration-200">
                     ${dest.curiousFacts[0].text}
                   </p>
 
