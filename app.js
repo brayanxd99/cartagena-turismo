@@ -422,27 +422,53 @@ function renderDestinations() {
                 </ul>
               </div>
 
-              <!-- Curiosities Section -->
-              <div class="pt-6 border-t border-slate-100">
-                <div class="flex items-center justify-between mb-4">
+              <!-- Interactive Archival Monograph Viewer (Non-AI Editorial Format) -->
+              <div class="pt-6 border-t border-slate-200/80">
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
                   <h4 class="text-xs font-mono-accent uppercase tracking-widest text-slate-900 font-bold flex items-center gap-2">
-                    <span class="w-1.5 h-1.5 rounded-full bg-[#C5A880]"></span>
-                    Historical Secrets & Field Curiosities
+                    <span class="w-1.5 h-1.5 bg-[#C5A880] rotate-45"></span>
+                    Historical Chronicles & Untold Lore
                   </h4>
-                  <span class="text-[10px] font-mono-accent text-slate-400">3 Insights</span>
+
+                  <!-- Roman Numeral Chronicle Selectors -->
+                  <div class="flex items-center gap-1 border border-slate-200 rounded-lg p-1 bg-slate-50/80">
+                    <button type="button" onclick="selectFact('${dest.id}', 0)" id="fact-tab-${dest.id}-0" class="fact-tab-btn active px-2.5 py-1 rounded text-[10px] font-bold uppercase transition-all">
+                      I
+                    </button>
+                    <button type="button" onclick="selectFact('${dest.id}', 1)" id="fact-tab-${dest.id}-1" class="fact-tab-btn px-2.5 py-1 rounded text-[10px] font-bold uppercase text-slate-500 hover:text-slate-900 transition-all">
+                      II
+                    </button>
+                    <button type="button" onclick="selectFact('${dest.id}', 2)" id="fact-tab-${dest.id}-2" class="fact-tab-btn px-2.5 py-1 rounded text-[10px] font-bold uppercase text-slate-500 hover:text-slate-900 transition-all">
+                      III
+                    </button>
+                  </div>
                 </div>
 
-                <div class="space-y-3">
-                  ${dest.curiousFacts.map(fact => `
-                    <div class="editorial-fact-block p-4 rounded-r-xl">
-                      <h5 class="text-xs font-bold text-slate-900 mb-1 font-serif tracking-wide">
-                        ${fact.title}
-                      </h5>
-                      <p class="text-xs text-slate-600 leading-relaxed font-light">
-                        ${fact.text}
-                      </p>
-                    </div>
-                  `).join('')}
+                <!-- Single Editorial Monograph Panel -->
+                <div class="archival-monograph p-6 rounded-xl relative transition-all duration-300">
+                  <div id="fact-watermark-${dest.id}" class="fact-watermark absolute top-2 right-5">
+                    I
+                  </div>
+
+                  <span id="fact-meta-${dest.id}" class="text-[10px] font-mono-accent uppercase tracking-[0.25em] text-[#9F825B] block mb-1">
+                    Archival Dispatch · Entry 01 of 03
+                  </span>
+
+                  <h5 id="fact-title-${dest.id}" class="text-base font-bold text-slate-900 mb-2 font-serif tracking-wide pr-12 transition-opacity duration-200">
+                    ${dest.curiousFacts[0].title}
+                  </h5>
+
+                  <p id="fact-text-${dest.id}" class="text-xs text-slate-600 leading-relaxed font-light transition-opacity duration-200">
+                    ${dest.curiousFacts[0].text}
+                  </p>
+
+                  <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center justify-between text-[11px] font-mono-accent text-slate-400">
+                    <span class="text-[10px] uppercase tracking-wider text-slate-400">Documented Oral & Military History</span>
+                    <button type="button" onclick="nextFact('${dest.id}')" class="text-xs font-mono-accent uppercase tracking-wider text-[#08131F] font-bold hover:text-[#9F825B] flex items-center gap-1.5 transition-colors">
+                      <span>Next Chronicle</span>
+                      <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -463,6 +489,55 @@ function renderDestinations() {
       </article>
     `;
   }).join('');
+}
+
+// Interactive Archival Monograph Fact Controller
+const activeFactIndices = {};
+
+function selectFact(destId, factIndex) {
+  const dest = AppState.destinations.find(d => d.id === destId);
+  if (!dest || !dest.curiousFacts || !dest.curiousFacts[factIndex]) return;
+
+  activeFactIndices[destId] = factIndex;
+  const fact = dest.curiousFacts[factIndex];
+  const romanNumerals = ["I", "II", "III"];
+
+  // Update tabs
+  for (let i = 0; i < 3; i++) {
+    const tabBtn = document.getElementById(`fact-tab-${destId}-${i}`);
+    if (tabBtn) {
+      if (i === factIndex) {
+        tabBtn.className = "fact-tab-btn active px-2.5 py-1 rounded text-[10px] font-bold uppercase transition-all";
+      } else {
+        tabBtn.className = "fact-tab-btn px-2.5 py-1 rounded text-[10px] font-bold uppercase text-slate-500 hover:text-slate-900 transition-all";
+      }
+    }
+  }
+
+  // Update monograph elements
+  const titleEl = document.getElementById(`fact-title-${destId}`);
+  const textEl = document.getElementById(`fact-text-${destId}`);
+  const metaEl = document.getElementById(`fact-meta-${destId}`);
+  const watermarkEl = document.getElementById(`fact-watermark-${destId}`);
+
+  if (titleEl && textEl) {
+    titleEl.style.opacity = "0";
+    textEl.style.opacity = "0";
+    setTimeout(() => {
+      titleEl.textContent = fact.title;
+      textEl.textContent = fact.text;
+      if (metaEl) metaEl.textContent = `Archival Dispatch · Entry 0${factIndex + 1} of 03`;
+      if (watermarkEl) watermarkEl.textContent = romanNumerals[factIndex] || "I";
+      titleEl.style.opacity = "1";
+      textEl.style.opacity = "1";
+    }, 150);
+  }
+}
+
+function nextFact(destId) {
+  const currentIdx = activeFactIndices[destId] !== undefined ? activeFactIndices[destId] : 0;
+  const nextIdx = (currentIdx + 1) % 3;
+  selectFact(destId, nextIdx);
 }
 
 // Canvas Signature

@@ -258,16 +258,56 @@ body {
   border-color: rgba(197, 168, 128, 0.5);
 }
 
-/* Refined Fact Box */
-.editorial-fact-block {
-  border-left: 2px solid var(--color-gold-accent);
-  background-color: #FAF8F5;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
+/* Refined Fact Box & Archival Monograph Viewer */
+.archival-monograph {
+  background: #FAF8F5;
+  border: 1px solid rgba(197, 168, 128, 0.35);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02);
+  position: relative;
+  overflow: hidden;
 }
 
-.editorial-fact-block:hover {
-  border-left-color: var(--color-primary-navy);
-  background-color: #F4EFE6;
+.fact-tab-btn {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  transition: all 0.25s ease;
+}
+
+.fact-tab-btn.active {
+  background-color: #08131F !important;
+  color: #C5A880 !important;
+  box-shadow: 0 2px 6px rgba(8, 19, 31, 0.15);
+}
+
+.fact-watermark {
+  font-family: 'Cinzel', 'Playfair Display', serif;
+  color: rgba(197, 168, 128, 0.18);
+  font-size: 4.5rem;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Cartographic Datum Header in Hero */
+.cartographic-datum {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.datum-line {
+  height: 1px;
+  width: 40px;
+  background: linear-gradient(90deg, transparent, rgba(197, 168, 128, 0.8));
+}
+
+.datum-line-rev {
+  height: 1px;
+  width: 40px;
+  background: linear-gradient(90deg, rgba(197, 168, 128, 0.8), transparent);
 }
 
 /* Signature Canvas */
