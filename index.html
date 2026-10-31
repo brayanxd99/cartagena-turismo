@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cartagena Mágica & Stopover Adventure | Guía Turística & Reservas</title>
+  
+  <!-- Favicon temático -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌴</text></svg>" />
+
+  <!-- Google Fonts: Plus Jakarta Sans, Playfair Display e Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;0,900;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 (Iconografía Premium) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Tailwind CSS CDN v3 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            caribbean: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+              deep: '#0a2540'
+            },
+            coral: {
+              500: '#f97316',
+              600: '#ea580c'
+            },
+            gold: {
+              400: '#fbbf24',
+              500: '#f59e0b'
+            }
+          },
+          fontFamily: {
+            display: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Confetti para confirmación de reserva -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Estilos Personalizados -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="font-display bg-slate-50 text-slate-800 antialiased selection:bg-sky-500 selection:text-white">
+
+  <!-- ====================================================================
+       BARRA DE NAVEGACIÓN SUPERIOR
+       ==================================================================== -->
+  <header class="fixed top-0 left-0 right-0 z-40 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logotipo con identidad gráfica caribeña -->
+        <a href="#inicio" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-sky-500 to-emerald-600 flex items-center justify-center text-white shadow-md shadow-sky-500/20 group-hover:scale-105 transition-transform">
+            <i class="fa-solid fa-umbrella-beach text-xl"></i>
+          </div>
+          <div>
+            <span class="text-xs uppercase tracking-widest text-sky-700 font-extrabold block">Turismo Oficial</span>
+            <span class="text-xl font-black text-slate-900 tracking-tight font-serif flex items-center gap-1.5">
+              Cartagena <span class="text-sky-600 font-sans font-bold">Mágica</span>
+            </span>
+          </div>
+        </a>
+
+        <!-- Menú de Enlaces Desktop -->
+        <nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-slate-700">
+          <a href="#destinos" class="hover:text-sky-600 transition-colors">Destinos Clave</a>
+          <a href="#folleto" class="hover:text-sky-600 transition-colors">Tour Stopover</a>
+          <a href="#itinerario" class="hover:text-sky-600 transition-colors">Itinerario</a>
+          <a href="#bookingSection" class="hover:text-sky-600 transition-colors">Reservar</a>
+        </nav>
+
+        <!-- Botones de Acción & Admin -->
+        <div class="flex items-center gap-3">
+          <!-- Botón de Sonido Olas del Mar -->
+          <button 
+            id="audioToggleBtn" 
+            onclick="toggleCaribbeanAudio()" 
+            class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-sky-50 text-sky-800 border border-sky-200 hover:bg-sky-100 transition-all shadow-sm"
+            title="Activar sonido relajante de olas del mar de Cartagena"
+          >
+            <i id="audioIcon" class="fa-solid fa-volume-xmark text-slate-400"></i>
+            <span id="audioLabel">Sonido Olas</span>
+          </button>
+
+          <!-- Acceso Exclusivo del Propietario / Admin -->
+          <button 
+            onclick="openAdminAuthModal()"
+            class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold bg-amber-50 text-amber-900 border border-amber-300 hover:bg-amber-100 transition-all shadow-sm group"
+            title="Acceso exclusivo del propietario para ver todas las respuestas recibidas (PIN: 2026)"
+          >
+            <i class="fa-solid fa-lock text-amber-600 group-hover:rotate-12 transition-transform"></i>
+            <span class="hidden lg:inline">Panel</span> Admin
+          </button>
+
+          <!-- Botón CTA Reserva -->
+          <a 
+            href="#bookingSection" 
+            class="btn-tropical-glow inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-md hover:from-orange-600 hover:to-amber-600 transition-all"
+          >
+            <i class="fa-solid fa-paper-plane text-xs"></i>
+            <span>Agendar Escala</span>
+          </a>
+
+          <!-- Botón Hamburguesa Móvil -->
+          <button 
+            onclick="toggleMobileMenu()" 
+            class="md:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 focus:outline-none"
+            aria-label="Menú móvil"
+          >
+            <i class="fa-solid fa-bars text-lg"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Menú Desplegable Móvil -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-b border-slate-200 px-6 py-4 space-y-3">
+      <a href="#destinos" onclick="toggleMobileMenu()" class="block text-sm font-semibold text-slate-800 py-1.5 hover:text-sky-600">🌴 5 Destinos Clave</a>
+      <a href="#folleto" onclick="toggleMobileMenu()" class="block text-sm font-semibold text-slate-800 py-1.5 hover:text-sky-600">📜 Folleto Oficial</a>
+      <a href="#itinerario" onclick="toggleMobileMenu()" class="block text-sm font-semibold text-slate-800 py-1.5 hover:text-sky-600">⏱️ Itinerario Sincronizado</a>
+      <a href="#bookingSection" onclick="toggleMobileMenu()" class="block text-sm font-semibold text-sky-600 py-1.5 font-bold">📝 Formulario de Reserva</a>
+      <button onclick="toggleMobileMenu(); openAdminAuthModal()" class="w-full text-left text-sm font-bold text-amber-700 py-1.5 flex items-center gap-2">
+        <i class="fa-solid fa-key"></i> Panel de Administración (Respuestas)
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ====================================================================
+         HERO SECTION: PORTADA CINEMATOGRÁFICA DE CARTAGENA
+         ==================================================================== -->
+    <section id="inicio" class="relative pt-32 pb-24 lg:pt-44 lg:pb-36 bg-caribbean-hero text-white overflow-hidden">
+      <!-- Partículas y destellos de ambientación -->
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-900/40 via-sky-950/60 to-slate-900/90 pointer-events-none"></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          
+          <!-- Insignia flotante con clima simulado de Cartagena -->
+          <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-xs font-bold bg-white/15 backdrop-blur-md border border-white/20 text-white mb-6 shadow-sm">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+            <i class="fa-solid fa-sun text-amber-400"></i>
+            <span>Cartagena de Indias: 31°C · Soleado & Brisa Marina</span>
+            <span class="hidden sm:inline text-white/40">|</span>
+            <span class="hidden sm:inline text-sky-200">Patrimonio Histórico UNESCO</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight font-serif leading-tight mb-6 drop-shadow-md">
+            Descubre la Magia Inmortal de <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-sky-200 to-white">Cartagena</span>
+          </h1>
+
+          <p class="text-base sm:text-xl text-sky-100 font-light leading-relaxed mb-8 drop-shadow">
+            La experiencia turística definitiva para visitantes y pasajeros en escala: recorre la imponente fortaleza de San Felipe, admira las aves del aviario nacional, sumérgete en las aguas turquesas de Barú y navega los manglares ancestrales de La Boquilla sin preocuparte por tu vuelo.
+          </p>
+
+          <!-- Badges de características del tour -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10 text-xs sm:text-sm">
+            <div class="bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/15">
+              <i class="fa-solid fa-plane-arrival text-amber-400 text-lg mb-1 block"></i>
+              <strong class="block text-white">Aeropuerto CTG</strong>
+              <span class="text-sky-200 text-xs">A 10 min del centro</span>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/15">
+              <i class="fa-solid fa-shield-halved text-sky-300 text-lg mb-1 block"></i>
+              <strong class="block text-white">Castillo San Felipe</strong>
+              <span class="text-sky-200 text-xs">Muralla militar</span>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/15">
+              <i class="fa-solid fa-feather text-emerald-300 text-lg mb-1 block"></i>
+              <strong class="block text-white">Aviario Nacional</strong>
+              <span class="text-sky-200 text-xs">+170 especies</span>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/15">
+              <i class="fa-solid fa-water text-cyan-300 text-lg mb-1 block"></i>
+              <strong class="block text-white">Playas de Barú</strong>
+              <span class="text-sky-200 text-xs">Arroz de coco & mar</span>
+            </div>
+          </div>
+
+          <!-- Botones de Acción -->
+          <div class="flex flex-wrap items-center gap-4">
+            <a 
+              href="#bookingSection" 
+              class="btn-tropical-glow inline-flex items-center gap-3 px-7 py-3.5 rounded-2xl text-base font-extrabold bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 text-white shadow-xl hover:scale-105 transition-transform"
+            >
+              <span>Reservar Stopover Tour</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+            <a 
+              href="#destinos" 
+              class="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl text-base font-bold bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 transition-all"
+            >
+              <i class="fa-solid fa-compass text-amber-400"></i>
+              <span>Ver 5 Destinos & Datos Curiosos</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECCIÓN DE LOS 5 DESTINOS CLAVE CON DATOS CURIOSOS
+         ==================================================================== -->
+    <section id="destinos" class="py-20 lg:py-28 bg-slate-50 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Encabezado de la sección -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-extrabold tracking-wider uppercase bg-sky-100 text-sky-800 mb-3">
+            <i class="fa-solid fa-gem text-sky-600"></i> Joyas Imperdibles de Cartagena
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 font-serif tracking-tight mb-4">
+            Cinco Maravillas que Marcarán tu Viaje
+          </h2>
+          <p class="text-slate-600 text-base sm:text-lg">
+            Explora a fondo cada uno de los puntos emblemáticos de la ciudad, desde la puerta de llegada en el aeropuerto hasta los santuarios naturales y leyendas piratas, con sus secretos y datos curiosos más asombrosos.
+          </p>
+        </div>
+
+        <!-- Contenedor dinámico de los 5 Destinos -->
+        <div id="destinationsContainer" class="space-y-12">
+          <!-- Renderizado dinámicamente mediante AppState.destinations en app.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECCIÓN DEL FOLLETO OFICIAL DE ESCALA (STOPOVER ADVENTURE)
+         ==================================================================== -->
+    <section id="folleto" class="py-20 bg-gradient-to-br from-sky-900 via-slate-900 to-sky-950 text-white relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Columna Izquierda: Folleto Original Interactivo -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="polaroid-frame max-w-sm w-full bg-white text-slate-800 rounded-2xl overflow-hidden shadow-2xl transition-all">
+              <div class="relative group cursor-pointer" onclick="openFlyerPreview()">
+                <img 
+                  src="assets/tour-flyer.jpg" 
+                  alt="Cartagena Stopover Adventure - Official Booking Form" 
+                  class="w-full h-auto object-cover rounded-t-xl group-hover:opacity-95 transition-opacity"
+                />
+                <div class="absolute inset-0 bg-sky-900/30 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                  <span class="px-4 py-2 rounded-xl bg-white text-slate-900 font-bold text-xs shadow-lg flex items-center gap-2">
+                    <i class="fa-solid fa-magnifying-glass-plus text-sky-600"></i> Ampliar Folleto
+                  </span>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <span class="text-xs font-bold uppercase tracking-wider text-sky-700 block mb-1">
+                  Documento Oficial de Referencia
+                </span>
+                <p class="text-sm font-semibold text-slate-700 font-serif">
+                  Cartagena Stopover Adventure — Coastal & Eco Experience
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna Derecha: Explicación del Paquete Stopover -->
+          <div class="lg:col-span-7">
+            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-400/20 text-amber-300 border border-amber-400/30 mb-4">
+              <i class="fa-solid fa-stopwatch text-amber-400"></i> ¿Haces Escala en Cartagena?
+            </span>
+
+            <h2 class="text-3xl sm:text-4xl font-black font-serif mb-4 leading-tight">
+              Aprovecha tu Escala de 6 a 12 Horas al Máximo
+            </h2>
+
+            <p class="text-sky-100 text-base leading-relaxed mb-6 font-light">
+              No te quedes esperando aburrido en la terminal. Nuestro servicio privado exclusivo te recoge directamente en la puerta de llegadas del <strong>Aeropuerto Rafael Núñez (CTG)</strong>, custodia tu equipaje en lockers seguros y te transporta en van climatizada por las 5 maravillas de Cartagena con sincronización horaria 100% garantizada para tu próximo vuelo.
+            </p>
+
+            <!-- Lista de Beneficios Sincronizados -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+              <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15">
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center font-bold text-sm">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                  </span>
+                  <h4 class="font-bold text-sm text-white">Garantía de Vuelo</h4>
+                </div>
+                <p class="text-xs text-sky-200">Sincronizamos la ruta minuto a minuto para que estés de vuelta con anticipación al check-in.</p>
+              </div>
+
+              <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15">
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-bold text-sm">
+                    <i class="fa-solid fa-lock"></i>
+                  </span>
+                  <h4 class="font-bold text-sm text-white">Custodia de Maletas</h4>
+                </div>
+                <p class="text-xs text-sky-200">Servicio de locker cerrado o almacenamiento vigilado dentro de la van privada.</p>
+              </div>
+
+              <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15">
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="w-8 h-8 rounded-xl bg-cyan-500/20 text-cyan-300 flex items-center justify-center font-bold text-sm">
+                    <i class="fa-solid fa-utensils"></i>
+                  </span>
+                  <h4 class="font-bold text-sm text-white">Almuerzo Caribeño</h4>
+                </div>
+                <p class="text-xs text-sky-200">Pescado frito con arroz de coco a la orilla del mar de Barú incluido en el plan.</p>
+              </div>
+
+              <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15">
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="w-8 h-8 rounded-xl bg-purple-500/20 text-purple-300 flex items-center justify-center font-bold text-sm">
+                    <i class="fa-solid fa-id-badge"></i>
+                  </span>
+                  <h4 class="font-bold text-sm text-white">Guía Bilingüe Certificado</h4>
+                </div>
+                <p class="text-xs text-sky-200">Atención personalizada en español, inglés o bilingüe durante todo el trayecto.</p>
+              </div>
+            </div>
+
+            <!-- Botón hacia el formulario -->
+            <a 
+              href="#bookingSection" 
+              class="btn-tropical-glow inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl text-sm font-extrabold bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg hover:scale-105 transition-transform"
+            >
+              <span>Llenar Formulario Digital de Escala</span>
+              <i class="fa-solid fa-pen-nib"></i>
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         ITINERARIO DE LA RUTA TURÍSTICA PASO A PASO
+         ==================================================================== -->
+    <section id="itinerario" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-sky-700 bg-sky-50 px-3 py-1 rounded-full border border-sky-200">
+            Paso a Paso
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-black text-slate-900 font-serif mt-3 mb-4">
+            Así es tu Jornada Inolvidable por Cartagena
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base">
+            Diseñado para fluir suavemente y optimizar cada minuto de tu estancia en el Caribe.
+          </p>
+        </div>
+
+        <div class="relative">
+          <!-- Línea conectora central en desktop -->
+          <div class="hidden lg:block absolute left-1/2 top-8 bottom-8 w-1 bg-gradient-to-b from-sky-400 via-amber-400 to-emerald-400 -translate-x-1/2"></div>
+
+          <div class="space-y-10 lg:space-y-16">
+            
+            <!-- Paso 1 -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div class="lg:col-span-5 text-right lg:pr-8">
+                <span class="text-xs font-bold text-sky-600 uppercase tracking-widest">Etapa 01</span>
+                <h3 class="text-xl font-bold text-slate-900">Bienvenida VIP en el Aeropuerto CTG</h3>
+                <p class="text-slate-600 text-xs sm:text-sm mt-1">Recepción personalizada con cartel a la salida del vuelo. Guardado de equipaje y abordo de la van climatizada.</p>
+              </div>
+              <div class="lg:col-span-2 flex justify-center">
+                <div class="w-12 h-12 rounded-2xl bg-sky-600 text-white flex items-center justify-center font-black text-lg shadow-lg z-10">
+                  <i class="fa-solid fa-plane-arrival"></i>
+                </div>
+              </div>
+              <div class="lg:col-span-5 lg:pl-8">
+                <span class="inline-block px-3 py-1 rounded-lg bg-sky-50 text-sky-700 text-xs font-semibold">Duración: 20 min</span>
+              </div>
+            </div>
+
+            <!-- Paso 2 -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div class="lg:col-span-5 lg:order-3 text-left lg:pl-8">
+                <span class="text-xs font-bold text-amber-600 uppercase tracking-widest">Etapa 02</span>
+                <h3 class="text-xl font-bold text-slate-900">Castillo San Felipe de Barajas</h3>
+                <p class="text-slate-600 text-xs sm:text-sm mt-1">Parada panorámica para fotos épicas, vista de las murallas coloniales y anécdotas de la batalla de Blas de Lezo.</p>
+              </div>
+              <div class="lg:col-span-2 lg:order-2 flex justify-center">
+                <div class="w-12 h-12 rounded-2xl bg-amber-500 text-white flex items-center justify-center font-black text-lg shadow-lg z-10">
+                  <i class="fa-solid fa-fort-awesome"></i>
+                </div>
+              </div>
+              <div class="lg:col-span-5 lg:order-1 text-right lg:pr-8">
+                <span class="inline-block px-3 py-1 rounded-lg bg-amber-50 text-amber-800 text-xs font-semibold">Duración: 45 min</span>
+              </div>
+            </div>
+
+            <!-- Paso 3 -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div class="lg:col-span-5 text-right lg:pr-8">
+                <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest">Etapa 03</span>
+                <h3 class="text-xl font-bold text-slate-900">Aviario Nacional de Colombia</h3>
+                <p class="text-slate-600 text-xs sm:text-sm mt-1">Recorrido por senderos ecológicos, exhibición de vuelo libre, cóndores, flamencos y tucanes en Barú.</p>
+              </div>
+              <div class="lg:col-span-2 flex justify-center">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-black text-lg shadow-lg z-10">
+                  <i class="fa-solid fa-dove"></i>
+                </div>
+              </div>
+              <div class="lg:col-span-5 lg:pl-8">
+                <span class="inline-block px-3 py-1 rounded-lg bg-emerald-50 text-emerald-800 text-xs font-semibold">Duración: 1h 30 min</span>
+              </div>
+            </div>
+
+            <!-- Paso 4 -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div class="lg:col-span-5 lg:order-3 text-left lg:pl-8">
+                <span class="text-xs font-bold text-cyan-600 uppercase tracking-widest">Etapa 04</span>
+                <h3 class="text-xl font-bold text-slate-900">Playa Barú & Almuerzo Costero</h3>
+                <p class="text-slate-600 text-xs sm:text-sm mt-1">Descanso bajo palmeras, baño en aguas turquesas y degustación del tradicional pescado frito con arroz con coco.</p>
+              </div>
+              <div class="lg:col-span-2 lg:order-2 flex justify-center">
+                <div class="w-12 h-12 rounded-2xl bg-cyan-600 text-white flex items-center justify-center font-black text-lg shadow-lg z-10">
+                  <i class="fa-solid fa-umbrella-beach"></i>
+                </div>
+              </div>
+              <div class="lg:col-span-5 lg:order-1 text-right lg:pr-8">
+                <span class="inline-block px-3 py-1 rounded-lg bg-cyan-50 text-cyan-800 text-xs font-semibold">Duración: 2h 00 min</span>
+              </div>
+            </div>
+
+            <!-- Paso 5 -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div class="lg:col-span-5 text-right lg:pr-8">
+                <span class="text-xs font-bold text-teal-600 uppercase tracking-widest">Etapa 05</span>
+                <h3 class="text-xl font-bold text-slate-900">Manglares de La Boquilla en Canoa</h3>
+                <p class="text-slate-600 text-xs sm:text-sm mt-1">Navegación tradicional guiada por nativos a través del mágico 'Túnel del Amor' y observación de fauna acuática.</p>
+              </div>
+              <div class="lg:col-span-2 flex justify-center">
+                <div class="w-12 h-12 rounded-2xl bg-teal-600 text-white flex items-center justify-center font-black text-lg shadow-lg z-10">
+                  <i class="fa-solid fa-sailboat"></i>
+                </div>
+              </div>
+              <div class="lg:col-span-5 lg:pl-8">
+                <span class="inline-block px-3 py-1 rounded-lg bg-teal-50 text-teal-800 text-xs font-semibold">Duración: 1h 00 min</span>
+              </div>
+            </div>
+
+            <!-- Paso 6 -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div class="lg:col-span-5 lg:order-3 text-left lg:pl-8">
+                <span class="text-xs font-bold text-indigo-600 uppercase tracking-widest">Etapa 06</span>
+                <h3 class="text-xl font-bold text-slate-900">Retorno Garantizado al Aeropuerto</h3>
+                <p class="text-slate-600 text-xs sm:text-sm mt-1">Llegada puntual a la terminal de salidas de CTG con entrega de equipaje seguro para tu chequeo y abordaje.</p>
+              </div>
+              <div class="lg:col-span-2 lg:order-2 flex justify-center">
+                <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center font-black text-lg shadow-lg z-10">
+                  <i class="fa-solid fa-plane-departure"></i>
+                </div>
+              </div>
+              <div class="lg:col-span-5 lg:order-1 text-right lg:pr-8">
+                <span class="inline-block px-3 py-1 rounded-lg bg-indigo-50 text-indigo-800 text-xs font-semibold">Puntualidad 100%</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECCIÓN DEL FORMULARIO DE RESERVA INTERACTIVO
+         (Digitalización exacta y enriquecida del folleto oficial subido por el usuario)
+         ==================================================================== -->
+    <section id="bookingSection" class="py-20 bg-pattern-colonial relative">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-orange-100 text-orange-800 border border-orange-200">
+            <i class="fa-solid fa-file-signature text-orange-600"></i> Reserva Oficial Digital
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-black text-slate-900 font-serif mt-3 mb-2">
+            Cartagena Stopover Adventure
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base">
+            Completa el formulario interactivo para coordinar tu recogida privada y la experiencia personalizada.
+          </p>
+        </div>
+
+        <!-- Tarjeta Principal del Formulario con Estilo Glassmorphism -->
+        <div class="bg-white rounded-3xl shadow-2xl border border-slate-200/80 overflow-hidden">
+          
+          <!-- Encabezado del Formulario con Tabs de Pasos -->
+          <div class="bg-gradient-to-r from-sky-900 via-slate-900 to-sky-950 p-6 text-white border-b border-sky-800">
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+              <div>
+                <span class="text-xs uppercase tracking-widest text-amber-400 font-extrabold block">Official Booking Form</span>
+                <h3 class="text-xl sm:text-2xl font-bold font-serif">Formulario de Registro de Pasajeros</h3>
+              </div>
+              <span class="text-xs text-sky-200 bg-white/10 px-3 py-1.5 rounded-xl border border-white/15">
+                <i class="fa-solid fa-shield-halved text-emerald-400"></i> Datos Encriptados & Seguros
+              </span>
+            </div>
+
+            <!-- Navegación por pasos interactivos -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+              <button type="button" id="tabStep1" onclick="setStep(1)" class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-sky-600 text-white shadow-md transition-all">
+                <span>1. Pasajero</span>
+              </button>
+              <button type="button" id="tabStep2" onclick="setStep(2)" class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all">
+                <span>2. Vuelos & Escala</span>
+              </button>
+              <button type="button" id="tabStep3" onclick="setStep(3)" class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all">
+                <span>3. Destinos</span>
+              </button>
+              <button type="button" id="tabStep4" onclick="setStep(4)" class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all">
+                <span>4. Comodidades</span>
+              </button>
+              <button type="button" id="tabStep5" onclick="setStep(5)" class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all">
+                <span>5. Pago & Firma</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Formulario Multi-Paso -->
+          <form id="bookingForm" onsubmit="handleBookingSubmit(event)" class="p-6 sm:p-8 lg:p-10">
+
+            <!-- ==========================================
+                 PASO 1: INFORMACIÓN DEL PASAJERO PRINCIPAL
+                 ========================================== -->
+            <div id="formStep1" class="space-y-6 block">
+              <div class="border-b border-slate-100 pb-4">
+                <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-sky-700 bg-sky-50 px-2.5 py-1 rounded-md mb-2">
+                  <i class="fa-solid fa-user"></i> Sección 01
+                </span>
+                <h4 class="text-xl font-bold text-slate-900">1. Lead Passenger Information (Pasajero Principal)</h4>
+                <p class="text-xs text-slate-500">Ingresa los datos de contacto de la persona líder del grupo para coordinar el encuentro en el aeropuerto.</p>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="sm:col-span-2">
+                  <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="passengerName">
+                    Nombre Completo (Full Name) <span class="text-rose-500">*</span>
+                  </label>
+                  <input 
+                    type="text" 
+                    id="passengerName" 
+                    required 
+                    placeholder="Ej. Juan Carlos Pérez Rodríguez"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="passengerId">
+                    Número de Pasaporte / Cédula / ID
+                  </label>
+                  <input 
+                    type="text" 
+                    id="passengerId" 
+                    placeholder="Ej. A12345678"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="passengerCountry">
+                    País de Residencia / Nacionalidad
+                  </label>
+                  <input 
+                    type="text" 
+                    id="passengerCountry" 
+                    placeholder="Ej. Colombia, México, EE.UU., España..."
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="passengerEmail">
+                    Correo Electrónico (Email Address) <span class="text-rose-500">*</span>
+                  </label>
+                  <input 
+                    type="email" 
+                    id="passengerEmail" 
+                    required 
+                    placeholder="nombre@ejemplo.com"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="passengerPhone">
+                    Móvil / WhatsApp con código de país <span class="text-rose-500">*</span>
+                  </label>
+                  <input 
+                    type="tel" 
+                    id="passengerPhone" 
+                    required 
+                    placeholder="Ej. +57 300 123 4567"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm"
+                  />
+                </div>
+              </div>
+
+              <!-- Tamaño del Grupo -->
+              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-3">
+                  <i class="fa-solid fa-users text-sky-600"></i> Tamaño del Grupo (Party Size):
+                </label>
+                <div class="grid grid-cols-3 gap-3">
+                  <div>
+                    <label class="block text-[11px] text-slate-500 font-semibold mb-1">Adultos (12+ años):</label>
+                    <input type="number" id="partyAdults" min="1" max="30" value="2" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm font-bold text-center" />
+                  </div>
+                  <div>
+                    <label class="block text-[11px] text-slate-500 font-semibold mb-1">Niños (2-11 años):</label>
+                    <input type="number" id="partyChildren" min="0" max="20" value="0" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm font-bold text-center" />
+                  </div>
+                  <div>
+                    <label class="block text-[11px] text-slate-500 font-semibold mb-1">Bebés (&lt;2 años):</label>
+                    <input type="number" id="partyInfants" min="0" max="10" value="0" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm font-bold text-center" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex justify-end pt-4">
+                <button type="button" onclick="nextStep()" class="btn-tropical-glow px-6 py-3 rounded-xl text-sm font-bold bg-sky-600 text-white flex items-center gap-2">
+                  <span>Siguiente: Vuelos & Escala</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- ==========================================
+                 PASO 2: DETALLES DE VUELO Y ESCALA
+                 ========================================== -->
+            <div id="formStep2" class="space-y-6 hidden">
+              <div class="border-b border-slate-100 pb-4">
+                <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-sky-700 bg-sky-50 px-2.5 py-1 rounded-md mb-2">
+                  <i class="fa-solid fa-plane"></i> Sección 02
+                </span>
+                <h4 class="text-xl font-bold text-slate-900">2. Flight & Layover Details (Rafael Núñez Intl Airport - CTG)</h4>
+                <p class="text-xs text-slate-500">Sincronizamos exactamente las horas de llegada y conexión para garantizar tu tranquilidad.</p>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="arrivalDate">
+                    Fecha de Llegada (Arrival Date) <span class="text-rose-500">*</span>
+                  </label>
+                  <input type="date" id="arrivalDate" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm" />
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="flightIn">
+                    Vuelo de Llegada & Aerolínea
+                  </label>
+                  <input type="text" id="flightIn" placeholder="Ej. AV-9310 (Avianca), Copa, LATAM..." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm" />
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="arrivalTime">
+                    Hora Estimada de Llegada (Touchdown)
+                  </label>
+                  <input type="time" id="arrivalTime" value="09:00" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm" />
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="flightOut">
+                    Vuelo de Conexión & Aerolínea
+                  </label>
+                  <input type="text" id="flightOut" placeholder="Ej. AA-1142 (American Airlines)" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm" />
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="departureTime">
+                    Hora de Salida / Abordaje (Boarding)
+                  </label>
+                  <input type="time" id="departureTime" value="18:30" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm" />
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                    Duración Total de la Escala (Total Layover Duration):
+                  </label>
+                  <div class="space-y-1.5 pt-1">
+                    <label class="flex items-center gap-2 text-xs font-medium text-slate-700 cursor-pointer">
+                      <input type="radio" name="layoverDuration" value="6 a 8 horas" checked class="text-sky-600 focus:ring-sky-500" />
+                      <span>6 a 8 horas (Express Highlights)</span>
+                    </label>
+                    <label class="flex items-center gap-2 text-xs font-medium text-slate-700 cursor-pointer">
+                      <input type="radio" name="layoverDuration" value="8 a 12 horas" class="text-sky-600 focus:ring-sky-500" />
+                      <span>8 a 12 horas (Experiencia Completa Recomendada)</span>
+                    </label>
+                    <label class="flex items-center gap-2 text-xs font-medium text-slate-700 cursor-pointer">
+                      <input type="radio" name="layoverDuration" value="Día Completo / Escala Extendida" class="text-sky-600 focus:ring-sky-500" />
+                      <span>Día Completo / Escala Extendida (+12 horas)</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex justify-between pt-4">
+                <button type="button" onclick="prevStep()" class="px-5 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100">
+                  <i class="fa-solid fa-arrow-left"></i> Anterior
+                </button>
+                <button type="button" onclick="nextStep()" class="btn-tropical-glow px-6 py-3 rounded-xl text-sm font-bold bg-sky-600 text-white flex items-center gap-2">
+                  <span>Siguiente: Destinos</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- ==========================================
+                 PASO 3: ITINERARIO Y DESTINOS DEL PAQUETE
+                 ========================================== -->
+            <div id="formStep3" class="space-y-6 hidden">
+              <div class="border-b border-slate-100 pb-4">
+                <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-sky-700 bg-sky-50 px-2.5 py-1 rounded-md mb-2">
+                  <i class="fa-solid fa-map-location-dot"></i> Sección 03
+                </span>
+                <h4 class="text-xl font-bold text-slate-900">3. Stopover Package: "Cartagena Coastal & Eco Experience"</h4>
+                <p class="text-xs text-slate-500">Servicio privado en van climatizada con traslados ida y vuelta al aeropuerto incluidos.</p>
+              </div>
+
+              <div class="space-y-3">
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                  Ruta e Hitos Incluidos (Marca los de tu interés):
+                </label>
+
+                <div class="p-3.5 rounded-xl border border-sky-200 bg-sky-50/50 flex items-start gap-3">
+                  <input type="checkbox" name="tourItinerary" value="Recogida en Aeropuerto CTG (Meet & Greet)" checked class="mt-1 text-sky-600 rounded focus:ring-sky-500" />
+                  <div>
+                    <strong class="text-sm text-slate-900 block">✓ Airport Pick-up (Meet & Greet en Llegadas de CTG)</strong>
+                    <span class="text-xs text-slate-600">El conductor y guía te reciben a la salida con cartel y asistencia inmediata.</span>
+                  </div>
+                </div>
+
+                <div class="p-3.5 rounded-xl border border-amber-200 bg-amber-50/50 flex items-start gap-3">
+                  <input type="checkbox" name="tourItinerary" value="Castillo de San Felipe (Parada Panorámica & Fotos)" checked class="mt-1 text-amber-600 rounded focus:ring-amber-500" />
+                  <div>
+                    <strong class="text-sm text-slate-900 block">✓ San Felipe Castle Panoramic Drive-by & Photo Stop</strong>
+                    <span class="text-xs text-slate-600">Parada rápida para fotos épicas, admirar la fortaleza y vista panorámica.</span>
+                  </div>
+                </div>
+
+                <div class="p-3.5 rounded-xl border border-emerald-200 bg-emerald-50/50 flex items-start gap-3">
+                  <input type="checkbox" name="tourItinerary" value="Aviario Nacional de Colombia (Caminata Ecológica)" checked class="mt-1 text-emerald-600 rounded focus:ring-emerald-500" />
+                  <div>
+                    <strong class="text-sm text-slate-900 block">✓ National Aviary of Colombia (Aviario Nacional)</strong>
+                    <span class="text-xs text-slate-600">Caminata ecológica guiada por los hábitats de tucanes, cóndores y flamencos en Barú.</span>
+                  </div>
+                </div>
+
+                <div class="p-3.5 rounded-xl border border-cyan-200 bg-cyan-50/50 flex items-start gap-3">
+                  <input type="checkbox" name="tourItinerary" value="Playas de Barú (Relajación & Almuerzo Costero)" checked class="mt-1 text-cyan-600 rounded focus:ring-cyan-500" />
+                  <div>
+                    <strong class="text-sm text-slate-900 block">✓ Beach Break & Relaxation (Playa de Barú & Almuerzo)</strong>
+                    <span class="text-xs text-slate-600">Tiempo libre de arena blanca, agua turquesa y almuerzo típico caribeño frente al mar.</span>
+                  </div>
+                </div>
+
+                <div class="p-3.5 rounded-xl border border-teal-200 bg-teal-50/50 flex items-start gap-3">
+                  <input type="checkbox" name="tourItinerary" value="Manglares de La Boquilla (Paseo Escénico en Canoa)" checked class="mt-1 text-teal-600 rounded focus:ring-teal-500" />
+                  <div>
+                    <strong class="text-sm text-slate-900 block">✓ Mangrove Ecosystem Scenic View & Boat Passage</strong>
+                    <span class="text-xs text-slate-600">Paso escénico en canoa tradicional por los túneles naturales de mangle.</span>
+                  </div>
+                </div>
+
+                <div class="p-3.5 rounded-xl border border-indigo-200 bg-indigo-50/50 flex items-start gap-3">
+                  <input type="checkbox" name="tourItinerary" value="Retorno Directo y Seguro al Aeropuerto CTG" checked class="mt-1 text-indigo-600 rounded focus:ring-indigo-500" />
+                  <div>
+                    <strong class="text-sm text-slate-900 block">✓ Direct Airport Return & Drop-off (Antes del check-in)</strong>
+                    <span class="text-xs text-slate-600">Llegada programada con tiempo de sobra para tu control de seguridad.</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Idioma del Tour -->
+              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                  <i class="fa-solid fa-language text-sky-600"></i> Preferencia de Idioma del Tour (Tour Language):
+                </label>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                  <label class="flex items-center gap-2 p-2.5 rounded-xl border border-slate-200 bg-white cursor-pointer hover:border-sky-400">
+                    <input type="radio" name="tourLanguage" value="Español" checked class="text-sky-600" />
+                    <span class="font-bold text-slate-800">Español</span>
+                  </label>
+                  <label class="flex items-center gap-2 p-2.5 rounded-xl border border-slate-200 bg-white cursor-pointer hover:border-sky-400">
+                    <input type="radio" name="tourLanguage" value="Inglés (English)" class="text-sky-600" />
+                    <span class="font-bold text-slate-800">Inglés (English)</span>
+                  </label>
+                  <label class="flex items-center gap-2 p-2.5 rounded-xl border border-slate-200 bg-white cursor-pointer hover:border-sky-400">
+                    <input type="radio" name="tourLanguage" value="Bilingüe (Español / English)" class="text-sky-600" />
+                    <span class="font-bold text-slate-800">Bilingüe (Ambos)</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="flex justify-between pt-4">
+                <button type="button" onclick="prevStep()" class="px-5 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100">
+                  <i class="fa-solid fa-arrow-left"></i> Anterior
+                </button>
+                <button type="button" onclick="nextStep()" class="btn-tropical-glow px-6 py-3 rounded-xl text-sm font-bold bg-sky-600 text-white flex items-center gap-2">
+                  <span>Siguiente: Comodidades</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- ==========================================
+                 PASO 4: COMODIDADES Y REQUERIMIENTOS
+                 ========================================== -->
+            <div id="formStep4" class="space-y-6 hidden">
+              <div class="border-b border-slate-100 pb-4">
+                <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-sky-700 bg-sky-50 px-2.5 py-1 rounded-md mb-2">
+                  <i class="fa-solid fa-bell-concierge"></i> Sección 04
+                </span>
+                <h4 class="text-xl font-bold text-slate-900">4. Included Amenities & Special Requirements</h4>
+                <p class="text-xs text-slate-500">Personaliza la custodia de tu equipaje, menú gastronómico y necesidades especiales.</p>
+              </div>
+
+              <!-- Custodia de Maletas -->
+              <div class="bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-200 space-y-3">
+                <label class="block text-xs font-bold text-slate-800 uppercase tracking-wider">
+                  <i class="fa-solid fa-suitcase-rolling text-sky-600"></i> Servicio de Custodia de Equipaje (Luggage Locker Storage):
+                </label>
+                
+                <div class="space-y-2">
+                  <label class="flex items-start gap-2.5 text-xs text-slate-700 cursor-pointer">
+                    <input type="radio" name="luggageOption" value="Sí, necesito custodia para mis maletas" onchange="handleLuggageToggle(true)" class="mt-0.5 text-sky-600" />
+                    <span>Sí, necesito almacenamiento / locker seguro para mis maletas o equipaje facturado.</span>
+                  </label>
+
+                  <div id="luggageCountContainer" class="hidden pl-6 pt-1">
+                    <label class="block text-[11px] font-semibold text-slate-600 mb-1">Número de maletas a custodiar (Number of bags to store):</label>
+                    <input type="number" id="luggageCount" min="1" max="15" value="2" class="w-32 px-3 py-1.5 rounded-lg border border-slate-300 text-xs font-bold" />
+                  </div>
+
+                  <label class="flex items-start gap-2.5 text-xs text-slate-700 cursor-pointer">
+                    <input type="radio" name="luggageOption" value="No, solo llevamos equipaje de mano en la van" checked onchange="handleLuggageToggle(false)" class="mt-0.5 text-sky-600" />
+                    <span>No, solo viajamos con morrales o equipaje de mano ligero que llevaremos dentro de la van.</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Preferencia de Almuerzo -->
+              <div class="bg-amber-50/50 p-4 sm:p-5 rounded-2xl border border-amber-200 space-y-3">
+                <label class="block text-xs font-bold text-amber-900 uppercase tracking-wider">
+                  <i class="fa-solid fa-utensils text-amber-600"></i> Menú de Almuerzo en Playa Barú (Lunch Preferences):
+                </label>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <label class="p-3 rounded-xl border border-amber-300 bg-white cursor-pointer flex flex-col justify-between hover:border-amber-500">
+                    <div class="flex items-center gap-2 mb-1">
+                      <input type="radio" name="lunchChoice" value="Pescado Frito Caribeño Tradicional con Arroz con Coco" checked class="text-amber-600" />
+                      <strong class="text-xs text-slate-900">Pescado Caribeño</strong>
+                    </div>
+                    <span class="text-[11px] text-slate-500 leading-tight">Pargo o mojarra fresca frita con patacones y arroz de coco titoté.</span>
+                  </label>
+
+                  <label class="p-3 rounded-xl border border-slate-200 bg-white cursor-pointer flex flex-col justify-between hover:border-amber-500">
+                    <div class="flex items-center gap-2 mb-1">
+                      <input type="radio" name="lunchChoice" value="Pollo / Carne a la Parrilla" class="text-amber-600" />
+                      <strong class="text-xs text-slate-900">Pollo / Carne</strong>
+                    </div>
+                    <span class="text-[11px] text-slate-500 leading-tight">Pechuga o lomo a la parrilla con patacones, ensalada y arroz.</span>
+                  </label>
+
+                  <label class="p-3 rounded-xl border border-slate-200 bg-white cursor-pointer flex flex-col justify-between hover:border-amber-500">
+                    <div class="flex items-center gap-2 mb-1">
+                      <input type="radio" name="lunchChoice" value="Opción Vegetariana / Vegana" class="text-amber-600" />
+                      <strong class="text-xs text-slate-900">Vegetariano / Vegano</strong>
+                    </div>
+                    <span class="text-[11px] text-slate-500 leading-tight">Plato balanceado a base de vegetales asados, patacones y ensalada.</span>
+                  </label>
+                </div>
+
+                <div class="pt-2">
+                  <label class="block text-[11px] font-semibold text-slate-700 mb-1" for="dietaryNotes">
+                    Alergias o solicitudes alimentarias especiales (Allergies or special requests):
+                  </label>
+                  <input type="text" id="dietaryNotes" placeholder="Ej. Alergia al maní, celíaco, sin mariscos..." class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs" />
+                </div>
+              </div>
+
+              <!-- Asistencia de Movilidad -->
+              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                  <i class="fa-solid fa-wheelchair text-sky-600"></i> Asistencia de Movilidad / Salud:
+                </label>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                  <label class="flex items-center gap-2 p-2 rounded-lg bg-white border border-slate-200 cursor-pointer">
+                    <input type="radio" name="mobilityAssistance" value="Ninguna" checked class="text-sky-600" />
+                    <span>Ninguna (Movilidad completa)</span>
+                  </label>
+                  <label class="flex items-center gap-2 p-2 rounded-lg bg-white border border-slate-200 cursor-pointer">
+                    <input type="radio" name="mobilityAssistance" value="Silla de Ruedas / Movilidad Limitada" class="text-sky-600" />
+                    <span>Silla de ruedas / reducida</span>
+                  </label>
+                  <label class="flex items-center gap-2 p-2 rounded-lg bg-white border border-slate-200 cursor-pointer">
+                    <input type="radio" name="mobilityAssistance" value="Adultos Mayores / Bebés" class="text-sky-600" />
+                    <span>Adultos mayores / Bebés</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="flex justify-between pt-4">
+                <button type="button" onclick="prevStep()" class="px-5 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100">
+                  <i class="fa-solid fa-arrow-left"></i> Anterior
+                </button>
+                <button type="button" onclick="nextStep()" class="btn-tropical-glow px-6 py-3 rounded-xl text-sm font-bold bg-sky-600 text-white flex items-center gap-2">
+                  <span>Siguiente: Pago & Firma</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- ==========================================
+                 PASO 5: MÉTODO DE PAGO, FIRMA Y CONFIRMACIÓN
+                 ========================================== -->
+            <div id="formStep5" class="space-y-6 hidden">
+              <div class="border-b border-slate-100 pb-4">
+                <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-sky-700 bg-sky-50 px-2.5 py-1 rounded-md mb-2">
+                  <i class="fa-solid fa-credit-card"></i> Sección 05
+                </span>
+                <h4 class="text-xl font-bold text-slate-900">5. Payment Method & Booking Confirmation</h4>
+                <p class="text-xs text-slate-500">Selecciona la forma de pago deseada y firma digitalmente tu solicitud.</p>
+              </div>
+
+              <!-- Métodos de Pago -->
+              <div class="space-y-3">
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+                  Método de Pago Preferido (Payment Method):
+                </label>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <label class="p-3.5 rounded-2xl border border-sky-300 bg-sky-50/50 cursor-pointer flex items-center gap-3 hover:border-sky-500">
+                    <input type="radio" name="paymentMethod" value="Tarjeta de Crédito / Débito (Enlace Seguro)" checked class="text-sky-600" />
+                    <div>
+                      <strong class="text-xs text-slate-900 block">Tarjeta Crédito / Débito</strong>
+                      <span class="text-[11px] text-slate-500">Enlace seguro en línea</span>
+                    </div>
+                  </label>
+
+                  <label class="p-3.5 rounded-2xl border border-slate-200 bg-white cursor-pointer flex items-center gap-3 hover:border-sky-500">
+                    <input type="radio" name="paymentMethod" value="PayPal" class="text-sky-600" />
+                    <div>
+                      <strong class="text-xs text-slate-900 block">PayPal</strong>
+                      <span class="text-[11px] text-slate-500">Pago internacional rápido</span>
+                    </div>
+                  </label>
+
+                  <label class="p-3.5 rounded-2xl border border-slate-200 bg-white cursor-pointer flex items-center gap-3 hover:border-sky-500">
+                    <input type="radio" name="paymentMethod" value="Efectivo al recibir en el aeropuerto (USD / COP)" class="text-sky-600" />
+                    <div>
+                      <strong class="text-xs text-slate-900 block">Efectivo en Aeropuerto</strong>
+                      <span class="text-[11px] text-slate-500">Pago en USD o COP</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Términos y Condiciones -->
+              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                <label class="flex items-start gap-3 cursor-pointer">
+                  <input type="checkbox" id="termsAccepted" required checked class="mt-1 text-sky-600 rounded focus:ring-sky-500" />
+                  <span class="text-xs text-slate-700 leading-relaxed">
+                    <strong>Términos & Condiciones de Sincronización:</strong> Entiendo y acepto que este tour está rigurosamente sincronizado con mi vuelo de conexión. La agencia garantiza recogida puntual en llegadas y retorno con antelación suficiente al Aeropuerto Internacional Rafael Núñez (CTG).
+                  </span>
+                </label>
+              </div>
+
+              <!-- Firma Digital en Canvas -->
+              <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+                    <i class="fa-solid fa-signature text-sky-600"></i> Firma Digital del Pasajero (Passenger Signature):
+                  </label>
+                  <button type="button" onclick="clearSignature()" class="text-xs font-semibold text-rose-600 hover:text-rose-800 flex items-center gap-1">
+                    <i class="fa-solid fa-rotate-left"></i> Borrar Firma
+                  </button>
+                </div>
+                <div class="bg-white rounded-2xl p-2 border border-slate-200">
+                  <canvas id="signatureCanvas" class="w-full h-32 rounded-xl bg-white"></canvas>
+                  <p class="text-[11px] text-slate-400 text-center mt-1">Dibuja tu firma con el dedo o mouse en el recuadro superior</p>
+                </div>
+              </div>
+
+              <div class="flex justify-between items-center pt-4">
+                <button type="button" onclick="prevStep()" class="px-5 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100">
+                  <i class="fa-solid fa-arrow-left"></i> Anterior
+                </button>
+                <button type="submit" class="btn-tropical-glow px-8 py-3.5 rounded-2xl text-base font-extrabold bg-gradient-to-r from-emerald-600 via-teal-600 to-sky-600 text-white flex items-center gap-3 shadow-xl">
+                  <i class="fa-solid fa-paper-plane"></i>
+                  <span>Enviar y Confirmar Reserva</span>
+                </button>
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       FOOTER ELEGANTE DE CARTAGENA CON ACCESO EXCLUSIVO
+       ==================================================================== -->
+  <footer class="bg-slate-950 text-slate-400 pt-16 pb-12 border-t border-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        
+        <!-- Columna 1: Marca & Eslogan -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-sky-600 flex items-center justify-center text-white">
+              <i class="fa-solid fa-umbrella-beach"></i>
+            </div>
+            <span class="text-xl font-black text-white font-serif">Cartagena Mágica</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Plataforma informativa de turismo y coordinación de escalas exclusivas en Cartagena de Indias, Colombia.
+          </p>
+          <div class="text-xs text-emerald-400 flex items-center gap-1.5">
+            <i class="fa-solid fa-circle-check"></i> Guías Nativos & Vans Privadas Certificadas
+          </div>
+        </div>
+
+        <!-- Columna 2: Destinos Clave -->
+        <div>
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Destinos Destacados</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#dest-aeropuerto" class="hover:text-sky-400 transition-colors">Aeropuerto Internacional Rafael Núñez (CTG)</a></li>
+            <li><a href="#dest-castillo" class="hover:text-sky-400 transition-colors">Castillo de San Felipe de Barajas</a></li>
+            <li><a href="#dest-aviario" class="hover:text-sky-400 transition-colors">Aviario Nacional de Colombia</a></li>
+            <li><a href="#dest-baru" class="hover:text-sky-400 transition-colors">Playas de Barú e Islas del Rosario</a></li>
+            <li><a href="#dest-manglares" class="hover:text-sky-400 transition-colors">Manglares & Ciénaga de La Boquilla</a></li>
+          </ul>
+        </div>
+
+        <!-- Columna 3: Contacto & Emergencias -->
+        <div>
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Atención & Emergencias</h4>
+          <ul class="space-y-2 text-xs">
+            <li><i class="fa-solid fa-location-dot text-amber-500 mr-2"></i> Crespo & Bocagrande, Cartagena</li>
+            <li><i class="fa-solid fa-phone text-sky-400 mr-2"></i> +57 (605) 693 1351 (Aeropuerto CTG)</li>
+            <li><i class="fa-brands fa-whatsapp text-emerald-400 mr-2"></i> +57 300 249 8812 (WhatsApp Tour)</li>
+            <li><i class="fa-solid fa-shield text-blue-400 mr-2"></i> Policía Turística: 123 / (605) 664 6175</li>
+          </ul>
+        </div>
+
+        <!-- Columna 4: Campo Exclusivo para el Propietario -->
+        <div>
+          <h4 class="text-sm font-bold text-amber-400 uppercase tracking-wider mb-4">
+            <i class="fa-solid fa-user-shield"></i> Acceso Propietario
+          </h4>
+          <p class="text-xs text-slate-400 mb-3">
+            Área protegida para consultar en vivo todas las respuestas y solicitudes de los pasajeros.
+          </p>
+          <button 
+            onclick="openAdminAuthModal()"
+            class="w-full py-2.5 px-4 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30 hover:bg-amber-500/20 transition-all flex items-center justify-center gap-2"
+          >
+            <i class="fa-solid fa-key"></i>
+            <span>Ver Respuestas de Pasajeros</span>
+          </button>
+          <span class="block text-[10px] text-slate-500 mt-2 text-center">
+            Atajo rápido: <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700">Ctrl</kbd> + <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700">Alt</kbd> + <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700">A</kbd>
+          </span>
+        </div>
+
+      </div>
+
+      <div class="border-t border-slate-900 pt-8 flex flex-wrap items-center justify-between gap-4 text-xs">
+        <p>© 2026 Cartagena Mágica & Stopover Tour. Todos los derechos reservados.</p>
+        <p class="text-slate-500">Desarrollado con pasión caribeña y diseño de alta fidelidad (+20 años exp.)</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================================================================
+       MODAL 1: CONFIRMACIÓN DE RESERVA CON TICKETING DIGITAL
+       ==================================================================== -->
+  <div id="confirmationModal" class="fixed inset-0 z-50 modal-overlay hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-slate-200">
+      <div class="bg-gradient-to-r from-emerald-600 to-teal-600 p-6 text-white text-center">
+        <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-3xl mx-auto mb-3">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <h3 class="text-2xl font-black font-serif">¡Solicitud de Reserva Exitosa!</h3>
+        <p class="text-emerald-100 text-xs mt-1">Tu escala en Cartagena está lista para ser inolvidable.</p>
+      </div>
+
+      <div class="p-6 space-y-4 text-xs">
+        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+          <div class="flex justify-between items-center border-b border-slate-200 pb-2">
+            <span class="text-slate-500">Código de Reserva:</span>
+            <strong id="confirmBookingId" class="text-sky-700 text-sm font-black"></strong>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-500">Pasajero Principal:</span>
+            <strong id="confirmPassengerName" class="text-slate-900"></strong>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-500">Fecha de Escala:</span>
+            <strong id="confirmDate" class="text-slate-900"></strong>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-500">Vuelo de Llegada:</span>
+            <strong id="confirmFlightIn" class="text-slate-900"></strong>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-500">Grupo:</span>
+            <strong id="confirmParty" class="text-slate-900"></strong>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-500">Menú Almuerzo:</span>
+            <strong id="confirmLunch" class="text-slate-900"></strong>
+          </div>
+        </div>
+
+        <p class="text-slate-500 text-[11px] text-center leading-relaxed">
+          Hemos guardado tu expediente en el sistema. El coordinador del tour te contactará vía WhatsApp para los detalles de bienvenida en la terminal de llegadas de CTG.
+        </p>
+
+        <div class="flex gap-3 pt-2">
+          <button onclick="window.print()" class="flex-1 py-3 rounded-xl bg-slate-100 text-slate-700 font-bold hover:bg-slate-200 transition-colors flex items-center justify-center gap-2">
+            <i class="fa-solid fa-print"></i> Imprimir / Guardar PDF
+          </button>
+          <button onclick="closeConfirmationModal()" class="flex-1 py-3 rounded-xl bg-sky-600 text-white font-bold hover:bg-sky-700 transition-colors">
+            Aceptar & Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       MODAL 2: AUTENTICACIÓN POR PIN DEL PROPIETARIO (ADMIN)
+       ==================================================================== -->
+  <div id="adminAuthModal" class="fixed inset-0 z-50 modal-overlay hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-sm w-full overflow-hidden shadow-2xl border border-slate-200">
+      <div class="bg-gradient-to-r from-slate-900 to-sky-950 p-6 text-white text-center">
+        <div class="w-14 h-14 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center text-2xl mx-auto mb-3">
+          <i class="fa-solid fa-lock"></i>
+        </div>
+        <h3 class="text-xl font-bold font-serif">Acceso del Propietario</h3>
+        <p class="text-xs text-sky-200 mt-1">Ingresa tu PIN maestro para ver las respuestas</p>
+      </div>
+
+      <div class="p-6 space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 text-center" for="adminPinInput">
+            PIN de Seguridad (Por defecto: 2026)
+          </label>
+          <input 
+            type="password" 
+            id="adminPinInput" 
+            maxlength="8" 
+            placeholder="••••"
+            onkeydown="if(event.key === 'Enter') verifyAdminPin()"
+            class="w-full text-center text-2xl font-black tracking-widest px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500"
+          />
+        </div>
+
+        <div class="flex gap-2">
+          <button onclick="closeAdminAuthModal()" class="flex-1 py-2.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors">
+            Cancelar
+          </button>
+          <button onclick="verifyAdminPin()" class="flex-1 py-2.5 rounded-xl text-xs font-bold bg-sky-600 text-white hover:bg-sky-700 transition-colors">
+            Ingresar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       MODAL 3: DASHBOARD ADMINISTRADOR COMPLETO ("CAMPO SOLO PARA MÍ")
+       ==================================================================== -->
+  <div id="adminDashboardModal" class="fixed inset-0 z-50 modal-overlay hidden items-center justify-center p-3 sm:p-6 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-7xl w-full max-h-[92vh] flex flex-col overflow-hidden shadow-2xl border border-slate-200">
+      
+      <!-- Topbar del Panel Admin -->
+      <div class="bg-gradient-to-r from-slate-900 via-sky-950 to-slate-900 p-5 sm:p-6 text-white border-b border-sky-800 flex flex-wrap items-center justify-between gap-4 shrink-0">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-500 flex items-center justify-center text-slate-950 font-black text-lg">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <div>
+            <span class="text-xs font-extrabold uppercase tracking-widest text-amber-400 block">Panel Exclusivo del Administrador</span>
+            <h3 class="text-lg sm:text-xl font-bold font-serif">Bandeja de Respuestas y Reservas de Pasajeros</h3>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button onclick="exportReservationsToCSV()" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-700 transition-all flex items-center gap-1.5 shadow-sm" title="Descargar todas las respuestas en formato Excel CSV">
+            <i class="fa-solid fa-file-excel"></i> Exportar CSV
+          </button>
+          <button onclick="promptChangeAdminPin()" class="px-3 py-2 rounded-xl text-xs font-bold bg-white/10 text-white hover:bg-white/20 transition-all" title="Cambiar clave PIN">
+            <i class="fa-solid fa-key"></i> Cambiar PIN
+          </button>
+          <button onclick="loadDemoData()" class="px-3 py-2 rounded-xl text-xs font-bold bg-white/10 text-white hover:bg-white/20 transition-all" title="Cargar reservas de prueba">
+            <i class="fa-solid fa-arrows-rotate"></i> Demo
+          </button>
+          <button onclick="closeAdminDashboard()" class="p-2 rounded-xl bg-rose-600/80 hover:bg-rose-600 text-white text-xs font-bold transition-all" title="Cerrar ventana">
+            <i class="fa-solid fa-xmark text-sm"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Métricas / Estadísticas Rápidas -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 bg-slate-50 border-b border-slate-200 shrink-0">
+        <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm">
+          <span class="text-xs text-slate-400 font-semibold block">Total Solicitudes</span>
+          <span id="adminStatTotal" class="text-2xl font-black text-slate-900">0</span>
+        </div>
+        <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm">
+          <span class="text-xs text-slate-400 font-semibold block">Total Pasajeros (Pax)</span>
+          <span id="adminStatPax" class="text-2xl font-black text-sky-600">0</span>
+        </div>
+        <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm">
+          <span class="text-xs text-slate-400 font-semibold block">Pendientes de Contacto</span>
+          <span id="adminStatPending" class="text-2xl font-black text-amber-500">0</span>
+        </div>
+        <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm">
+          <span class="text-xs text-slate-400 font-semibold block">Confirmadas</span>
+          <span id="adminStatConfirmed" class="text-2xl font-black text-emerald-600">0</span>
+        </div>
+      </div>
+
+      <!-- Barra de Búsqueda y Filtros -->
+      <div class="p-4 sm:p-6 border-b border-slate-200 flex flex-wrap items-center justify-between gap-4 shrink-0 bg-white">
+        <div class="flex-1 min-w-[240px]">
+          <div class="relative">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+            <input 
+              type="text" 
+              id="adminSearchInput" 
+              oninput="renderAdminTable()"
+              placeholder="Buscar por pasajero, vuelo, correo o teléfono..." 
+              class="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-sky-500"
+            />
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-semibold text-slate-500">Filtrar por Estado:</span>
+          <select 
+            id="adminStatusFilter" 
+            onchange="renderAdminTable()" 
+            class="text-xs font-semibold px-3 py-2 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-sky-500"
+          >
+            <option value="TODOS">Todos los Estados</option>
+            <option value="Confirmado">Confirmados</option>
+            <option value="Pendiente">Pendientes</option>
+            <option value="En Tour">En Tour</option>
+            <option value="Finalizado">Finalizados</option>
+            <option value="Cancelado">Cancelados</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Tabla con Scroll de Respuestas -->
+      <div class="overflow-x-auto flex-1 p-4 sm:p-6 bg-slate-50/50">
+        <table class="w-full text-left border-collapse bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+          <thead>
+            <tr class="bg-slate-100/80 border-b border-slate-200 text-[11px] uppercase tracking-wider text-slate-600 font-bold">
+              <th class="py-3 px-4">Código / Fecha</th>
+              <th class="py-3 px-4">Pasajero & Contacto</th>
+              <th class="py-3 px-4">Vuelos & Escala</th>
+              <th class="py-3 px-4">Pax & Menú</th>
+              <th class="py-3 px-4">Idioma & Pago</th>
+              <th class="py-3 px-4">Estado</th>
+              <th class="py-3 px-4 text-right">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="adminTableBody" class="divide-y divide-slate-100">
+            <!-- Se llena dinámicamente con JavaScript desde localStorage -->
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       MODAL 4: EXPEDIENTE DETALLADO DE UNA RESERVA
+       ==================================================================== -->
+  <div id="reservationDetailModal" class="fixed inset-0 z-50 modal-overlay hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200">
+      <div class="p-6 sm:p-8" id="detailModalContent">
+        <!-- Contenido generado dinámicamente en viewReservationDetail() -->
+      </div>
+      <div class="p-4 bg-slate-50 border-t border-slate-200 flex justify-end">
+        <button onclick="closeReservationDetailModal()" class="px-5 py-2 rounded-xl text-xs font-bold bg-slate-800 text-white hover:bg-slate-900 transition-colors">
+          Cerrar Expediente
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       MODAL 5: VISTA PREVIA DEL FOLLETO ORIGINAL
+       ==================================================================== -->
+  <div id="flyerPreviewModal" class="fixed inset-0 z-50 modal-overlay hidden items-center justify-center p-4" onclick="closeFlyerPreview()">
+    <div class="max-w-xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl" onclick="event.stopPropagation()">
+      <div class="p-3 flex justify-between items-center bg-slate-900 text-white">
+        <span class="text-xs font-bold text-amber-400">Cartagena Stopover Adventure — Folleto Oficial</span>
+        <button onclick="closeFlyerPreview()" class="text-white hover:text-rose-400 text-sm p-1">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <img src="assets/tour-flyer.jpg" alt="Folleto de Escala en Cartagena" class="w-full max-h-[80vh] object-contain bg-slate-950" />
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      if (menu) menu.classList.toggle('hidden');
+    }
+    function openFlyerPreview() {
+      const modal = document.getElementById('flyerPreviewModal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    }
+    function closeFlyerPreview() {
+      const modal = document.getElementById('flyerPreviewModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>
