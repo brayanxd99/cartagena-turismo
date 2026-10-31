@@ -20,7 +20,13 @@
   --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Base Typographic Hierarchy — Historical Chronicle & Classical Calligraphy */
+/* Mobile-First Touch & Responsive Optimizations */
+html {
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
+  overflow-x: hidden;
+}
+
 body {
   background-color: var(--color-canvas);
   color: var(--color-text-main);
@@ -31,6 +37,28 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Prevent iOS Safari auto-zoom on form inputs by guaranteeing 16px on mobile */
+@media screen and (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  input[type="time"],
+  input[type="number"],
+  input[type="password"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Horizontal Smooth Touch Scrolling for Tables & Tabs */
+.touch-scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 }
 
 .font-calligraphy {
@@ -306,6 +334,19 @@ body {
   gap: 1rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
+  max-width: 100%;
+}
+
+@media screen and (max-width: 640px) {
+  .cartographic-datum {
+    gap: 0.4rem;
+    letter-spacing: 0.15em;
+  }
+  .fact-watermark {
+    font-size: 3.25rem !important;
+    top: 0.5rem !important;
+    right: 0.75rem !important;
+  }
 }
 
 .datum-line {

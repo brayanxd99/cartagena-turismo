@@ -357,11 +357,11 @@ function renderDestinations() {
   container.innerHTML = AppState.destinations.map((dest, index) => {
     const isEven = index % 2 === 0;
     return `
-      <article id="dest-${dest.id}" class="reveal-on-scroll editorial-card rounded-2xl overflow-hidden mb-16">
+      <article id="dest-${dest.id}" class="reveal-on-scroll editorial-card rounded-2xl overflow-hidden mb-12 sm:mb-16">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
           
           <!-- Image Column -->
-          <div class="lg:col-span-5 relative min-h-[360px] lg:min-h-full overflow-hidden ${isEven ? 'lg:order-1' : 'lg:order-2'}">
+          <div class="lg:col-span-5 relative min-h-[250px] sm:min-h-[360px] lg:min-h-full overflow-hidden ${isEven ? 'lg:order-1' : 'lg:order-2'}">
             <img 
               src="${dest.image}" 
               alt="${dest.title}" 
@@ -385,7 +385,7 @@ function renderDestinations() {
           </div>
 
           <!-- Content & Curiosities Column -->
-          <div class="lg:col-span-7 p-6 sm:p-10 lg:p-12 flex flex-col justify-between ${isEven ? 'lg:order-2' : 'lg:order-1'}">
+          <div class="lg:col-span-7 p-5 sm:p-8 lg:p-12 flex flex-col justify-between ${isEven ? 'lg:order-2' : 'lg:order-1'}">
             <div>
               <div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-3">
                 <span class="font-mono-accent text-xs font-semibold text-[#9F825B] tracking-widest uppercase">
@@ -551,21 +551,21 @@ function initSignatureCanvas() {
   signatureCtx = signatureCanvas.getContext("2d");
 
   const rect = signatureCanvas.getBoundingClientRect();
-  signatureCanvas.width = rect.width * 2;
-  signatureCanvas.height = 140 * 2;
-  signatureCtx.scale(2, 2);
-  signatureCtx.lineWidth = 2;
+  const dpr = Math.max(window.devicePixelRatio || 1, 1);
+  signatureCanvas.width = (rect.width || 320) * dpr;
+  signatureCanvas.height = 140 * dpr;
+  signatureCtx.scale(dpr, dpr);
+  signatureCtx.lineWidth = 2.2;
   signatureCtx.lineCap = "round";
   signatureCtx.lineJoin = "round";
   signatureCtx.strokeStyle = "#08131F";
 
   function getPos(e) {
     const r = signatureCanvas.getBoundingClientRect();
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    const touch = (e.touches && e.touches[0]) ? e.touches[0] : ((e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0] : e);
     return {
-      x: clientX - r.left,
-      y: clientY - r.top
+      x: touch.clientX - r.left,
+      y: touch.clientY - r.top
     };
   }
 
@@ -590,6 +590,11 @@ function initSignatureCanvas() {
     isDrawing = false;
   }
 
+  // Remove existing listeners if any
+  signatureCanvas.removeEventListener("mousedown", startDraw);
+  signatureCanvas.removeEventListener("mousemove", draw);
+  window.removeEventListener("mouseup", stopDraw);
+
   signatureCanvas.addEventListener("mousedown", startDraw);
   signatureCanvas.addEventListener("mousemove", draw);
   window.addEventListener("mouseup", stopDraw);
@@ -598,6 +603,18 @@ function initSignatureCanvas() {
   signatureCanvas.addEventListener("touchmove", draw, { passive: false });
   signatureCanvas.addEventListener("touchend", stopDraw);
 }
+
+// Orientation & Screen Resize Auto-Adjustment
+window.addEventListener("resize", () => {
+  if (currentStep === 5) {
+    initSignatureCanvas();
+  }
+});
+window.addEventListener("orientationchange", () => {
+  if (currentStep === 5) {
+    setTimeout(initSignatureCanvas, 200);
+  }
+});
 
 function clearSignature() {
   if (!signatureCanvas || !signatureCtx) return;
